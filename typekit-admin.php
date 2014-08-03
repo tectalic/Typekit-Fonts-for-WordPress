@@ -54,7 +54,7 @@ class OM4_Typekit_Admin {
 					?>
 					<div id="error" class="error"><p>
 					<?php
-					$instructions = __(' Please <a href="#getembedcode">click here for instructions</a> on how to obtain your Typekit embed code.', 'om4-typekit');
+					$instructions = sprintf( __(' Please <a href="%s">click here for instructions</a> on how to obtain your Typekit embed code.', 'om4-typekit'), '#getembedcode');
 					if (strlen($_POST['embedcode'])) {
 						// an embed code has been submitted, but was rejected
 						printf(__('Invalid Typekit embed code. %s', 'om4-typekit'), $instructions);
@@ -94,7 +94,7 @@ class OM4_Typekit_Admin {
 		<p><?php _e('To use this plugin you need to sign up with Typekit, and then configure the following options.', 'om4-typekit'); ?></p>
 		<h3><?php _e('Register with Typekit', 'om4-typekit'); ?></h3>
 		<ol>
-			<li><?php _e('Go to <a href="http://typekit.com" target="blank">typekit.com</a> and register for an account', 'om4-typekit'); ?></li>
+			<li><?php printf( __('Go to <a href="%s" target="blank">typekit.com</a> and register for an account', 'om4-typekit'), 'http://typekit.com'); ?></li>
 			<li><?php _e('Choose a few fonts to add to your account and Publish them', 'om4-typekit'); ?></li>
 			<li id="getembedcode"><?php _e('Go to the Kit Editor and get your Embed Code (link at the top right of the screen)', 'om4-typekit'); ?></li>
 		</ol>
@@ -147,9 +147,9 @@ class OM4_Typekit_Admin {
 			</p>
 		<h4 id="help-css-external"><?php _e('Where to go to get help', 'om4-typekit'); ?></h4>
 			<p class="indent">
-				<?php _e('<a href="http://getsatisfaction.com/typekit/" target="_blank">Typekit Support</a>', 'om4-typekit'); ?>
-				<br /><?php _e('<a href="http://www.sitepoint.com/forums/forumdisplay.php?f=53" target="_blank">Sitepoint CSS Forums</a>', 'om4-typekit'); ?>
-				<br /><?php _e('<a href="http://www.w3schools.com/CSS/default.asp" target="_blank">W3Schools CSS Help</a>', 'om4-typekit'); ?>
+				<?php printf( __('<a href="%s" target="_blank">Typekit Support</a>', 'om4-typekit'), 'http://getsatisfaction.com/typekit/' ); ?>
+				<br /><?php printf( __('<a href="%s" target="_blank">Sitepoint CSS Forums</a>', 'om4-typekit'), 'http://www.sitepoint.com/forums/forumdisplay.php?f=53' ); ?>
+				<br /><?php printf( __('<a href="%s" target="_blank">W3Schools CSS Help</a>', 'om4-typekit'), 'http://www.w3schools.com/CSS/default.asp' ); ?>
 			</p>
 		</div>
 		<?php 
