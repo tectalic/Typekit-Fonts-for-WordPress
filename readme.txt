@@ -26,7 +26,9 @@ This plugin is designed to function securely with both WordPress and WordPress M
 
 If the website is using HTTPS/SSL, the SSL version of the Typekit embed code is automatically used instead.
 
-See the [Typekit Fonts for WordPress Plugin](http://om4.com.au/wordpress-plugins/typekit-fonts-for-wordpress-plugin/) home page for further information.
+**Other Languages**
+
+If you would like to help translate this plugin into another language, [please visit the Transifex project page](https://www.transifex.com/projects/p/typekit-fonts-for-wordpress/). Thank you.
 
 == Installation ==
 
