@@ -88,11 +88,11 @@ class OM4_Typekit {
 		// Store the name of the directory that this plugin is installed in
 		$this->dirname = str_replace('/typekit.php', '', plugin_basename(__FILE__));
 
-		register_activation_hook(__FILE__, array(&$this, 'Activate'));
+		register_activation_hook(__FILE__, array($this, 'Activate'));
 
-		add_action('init', array(&$this, 'Initialise'));
+		add_action('init', array($this, 'Initialise'));
 		
-		add_action('wp_head', array(&$this, 'HeaderCode'), 99);
+		add_action('wp_head', array($this, 'HeaderCode'), 99);
 
 		$data = get_option($this->optionName);
 		if (is_array($data)) {
