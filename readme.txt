@@ -27,6 +27,7 @@ This plugin is designed to function securely with both WordPress and WordPress M
 If the website is using HTTPS/SSL, the SSL version of the Typekit embed code is automatically used instead.
 
 **Available Languages**
+
 * Japanese – 日本語 ( ja )
 
 **Other Languages**
