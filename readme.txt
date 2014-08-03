@@ -61,6 +61,7 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 
 = 1.7 =
 * Improved translation support.
+* Japanese language.
 
 = 1.6 =
 * WordPress 3.8 compatibility.
@@ -105,6 +106,9 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.7 =
+* Japanese language support.
 
 = 1.5 =
 * WordPress 3.5 compatibility.
