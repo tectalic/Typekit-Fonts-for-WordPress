@@ -3,8 +3,8 @@ Contributors: jamescollins, glenn-om4
 Donate link: http://om4.com.au/wordpress-plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu
 Requires at least: 3.6
-Tested up to: 4.0
-Stable tag: 1.7
+Tested up to: 4.1
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,10 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.7.1 =
+* WordPress 4.1 compatibility.
+* Readme updates.
 
 = 1.7 =
 * Japanese language - thanks to ThemeBoy.
