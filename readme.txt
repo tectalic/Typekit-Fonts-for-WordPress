@@ -2,9 +2,9 @@
 Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/wordpress-plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu
-Requires at least: 3.6
-Tested up to: 4.2
-Stable tag: 1.7.1
+Requires at least: 4.0
+Tested up to: 4.3.1
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,8 +23,6 @@ Detailed instructions are available on the plugin's settings page.
 Compatible with WordPress Multisite.
 
 This plugin is designed to function securely with both WordPress and WordPress Multisite. When the JavaScript Embed Code is entered on the settings page, the user account id is extracted from the embed code and the correctly formed Typekit Embed Code is included in the site header, so it is not possible to use the Embed Code field to include arbitrary JavaScript. The Custom CSS field is also filtered, and doesn't allow any HTML code to be entered.
-
-If the website is using HTTPS/SSL, the SSL version of the Typekit embed code is automatically used instead.
 
 **Available Languages**
 
@@ -62,6 +60,11 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.7.2 =
+* Use Typekit's latest recommended embed code (which uses a https:// typekit embed code URL for all sites).
+* WordPress 4.3 compatibility.
+* Change plugin's textdomain to match the plugin's folder name in preparation for translate.wordpress.org translations.
 
 = 1.7.1 =
 * WordPress 4.1 compatibility.

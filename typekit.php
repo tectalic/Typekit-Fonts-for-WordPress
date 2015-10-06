@@ -3,7 +3,7 @@
 Plugin Name: Typekit Fonts for WordPress
 Plugin URI: https://om4.com.au/wordpress-plugins/typekit-fonts-for-wordpress-plugin/
 Description: Use a range of hundreds of high quality fonts on your WordPress website by integrating the <a href="http://typekit.com">Typekit</a> font service into your WordPress blog.
-Version: 1.7.1
+Version: 1.7.2
 Author: OM4
 Author URI: https://om4.com.au/
 Text Domain: typekit-fonts-for-wordpress
@@ -41,8 +41,8 @@ class OM4_Typekit {
 	
 	var $admin;
 	
-	var $embedcode = '<script type="text/javascript" src="//use.typekit.net/%s.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>';
+	var $embedcode = '<script src="https://use.typekit.net/%s.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>';
 	
 	/**
 	 * Perl-based regular expression that is used to extract the ID from the typekit embed code
@@ -60,7 +60,7 @@ class OM4_Typekit {
 	 * 
 	 * @var string
 	 */
-	var $embedcodeurl = '%s://use.typekit.net/%s.js';
+	var $embedcodeurl = 'https://use.typekit.net/%s.js';
 	
 	/*
 	 * Default settings
@@ -69,15 +69,6 @@ class OM4_Typekit {
 		'id'=> '',
 		'css' => ''
 	);
-
-	/*
-	 * HTTP scheme.
-	 *
-	 * HTTP by deafult, or HTTPS if the site is being loaded over SSL.
-	 *
-	 * @var string
-	 */
-	var $scheme = 'http';
 	
 	/**
 	 * Class Constructor
@@ -100,7 +91,6 @@ class OM4_Typekit {
 			$this->settings = $data['settings'];
 		}
 
-		if ( is_ssl() ) $this->scheme = 'https';
 	}
 	
 	/**

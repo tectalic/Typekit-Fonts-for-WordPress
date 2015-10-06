@@ -67,7 +67,7 @@ class OM4_Typekit_Admin {
 					<?php
 				} else {
 					// ensure the Typekit account ID maps to a valid JS file on Typekit's servers (ie doesn't return a 404 error)
-					$url = sprintf($this->typekitInstance->embedcodeurl, $this->typekitInstance->scheme, $id);
+					$url = sprintf($this->typekitInstance->embedcodeurl, $id);
 					$result = wp_remote_head($url);
 					if (is_array($result) && $result['response']['code'] == 404) {
 						?>
