@@ -6,7 +6,7 @@ Description: Use a range of hundreds of high quality fonts on your WordPress web
 Version: 1.7.1
 Author: OM4
 Author URI: https://om4.com.au/
-Text Domain: om4-typekit
+Text Domain: typekit-fonts-for-wordpress
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -106,13 +106,13 @@ class OM4_Typekit {
 	/**
 	 * Load up the localization file if we're using WordPress in a different language.
 	 *
-	 * Place it in this plugin's "languages" folder and name it "om4-typekit-[value in wp-config].mo".
+	 * Place it in this plugin's "languages" folder and name it "typekit-fonts-for-wordpress-[value in wp-config].mo".
 	 *
 	 * See languages/_readme.txt for more information.
 	 *
 	 */
 	function LoadDomain() {
-		load_plugin_textdomain( 'om4-typekit', false, "{$this->dirname}/languages" );
+		load_plugin_textdomain( 'typekit-fonts-for-wordpress', false, "{$this->dirname}/languages" );
 	}
 	
 	/**
