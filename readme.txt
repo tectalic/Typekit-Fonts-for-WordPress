@@ -1,7 +1,7 @@
 === Typekit Fonts for WordPress ===
 Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/wordpress-plugins/#donate
-Tags: typekit, fonts, font, design, wp, multisite, wpmu
+Tags: typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 4.0
 Tested up to: 4.3.1
 Stable tag: 1.7.2
@@ -30,7 +30,9 @@ This plugin is designed to function securely with both WordPress and WordPress M
 
 **Other Languages**
 
-If you would like to help translate this plugin into another language, [please visit the Transifex project page](https://www.transifex.com/projects/p/typekit-fonts-for-wordpress/). Thank you.
+If you would like to help translate this plugin into another language, [please visit the translate.wordpress.org site](https://translate.wordpress.org/projects/wp-plugins/typekit-fonts-for-wordpress). 
+
+Thank you.
 
 == Installation ==
 
@@ -60,6 +62,9 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.8 =
+* Use WordPress.org language packs for plugin translations.
 
 = 1.7.2 =
 * Use Typekit's latest recommended embed code (which uses a https:// typekit embed code URL for all sites).

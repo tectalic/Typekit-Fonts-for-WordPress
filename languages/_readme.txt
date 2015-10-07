@@ -1,5 +1,3 @@
-If you would like to help translate this plugin into another language, please visit the Transifex project page: https://www.transifex.com/projects/p/typekit-fonts-for-wordpress/
-
-I will give you credit and it will help others who speak your language.
+If you would like to help translate this plugin into another language, please visit https://translate.wordpress.org/projects/wp-plugins/typekit-fonts-for-wordpress. 
 
 Thank you!
