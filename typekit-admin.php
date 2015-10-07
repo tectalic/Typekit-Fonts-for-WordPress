@@ -16,16 +16,16 @@ class OM4_Typekit_Admin {
 	function OM4_Typekit_Admin(& $instance) {
 		global $wpdb;
 		
-		$this->typekitInstance = & $instance;
+		$this->typekitInstance = $instance;
 		
-		add_action('admin_menu', array(& $this, 'AdminMenu'));
+		add_action('admin_menu', array($this, 'AdminMenu'));
 	}
 	
 	/**
 	 * Set up the Admin Settings menu
 	 */
 	function AdminMenu() {
-		add_options_page(__('Typekit Fonts', 'typekit-fonts-for-wordpress'), __('Typekit Fonts', 'typekit-fonts-for-wordpress'), 'manage_options', basename(__FILE__), array(& $this, 'AdminPage'));
+		add_options_page(__('Typekit Fonts', 'typekit-fonts-for-wordpress'), __('Typekit Fonts', 'typekit-fonts-for-wordpress'), 'manage_options', basename(__FILE__), array($this, 'AdminPage'));
 	}
 	
 	/**

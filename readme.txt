@@ -65,9 +65,10 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 
 = 1.8 =
 * Use WordPress.org language packs for plugin translations.
+* PHP code changes (no more pass by reference).
 
 = 1.7.2 =
-* Use Typekit's latest recommended embed code (which uses a https:// typekit embed code URL for all sites).
+* Use Typekit's latest recommended embed code (which uses a https:// Typekit embed code URL for all sites).
 * WordPress 4.3 compatibility.
 * Change plugin's textdomain to match the plugin's folder name in preparation for translate.wordpress.org translations.
 
