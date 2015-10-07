@@ -262,7 +262,7 @@ msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid ""
-"https://om4.com.au/wordpress-plugins/typekit-fonts-for-wordpress-plugin/"
+"https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/"
 msgstr ""
 
 #. Description of the plugin/theme
