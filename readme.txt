@@ -30,7 +30,7 @@ This plugin is designed to function securely with both WordPress and WordPress M
 
 **Other Languages**
 
-If you would like to help translate this plugin into another language, [please visit the translate.wordpress.org site](https://translate.wordpress.org/projects/wp-plugins/typekit-fonts-for-wordpress). 
+If you would like to help translate this plugin into another language, [please visit the translate.wordpress.org site](https://translate.wordpress.org/projects/wp-plugins/typekit-fonts-for-wordpress).
 
 Thank you.
 
@@ -66,6 +66,7 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 = 1.8 =
 * Use WordPress.org language packs for plugin translations.
 * PHP code changes (no more pass by reference).
+* Screenshot updates.
 
 = 1.7.2 =
 * Use Typekit's latest recommended embed code (which uses a https:// Typekit embed code URL for all sites).
