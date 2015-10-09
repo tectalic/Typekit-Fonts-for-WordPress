@@ -4,7 +4,7 @@ Donate link: https://om4.com.au/plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 1.7.2
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,10 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.8 =
+* Support for translate.wordpress.org language packs.
+* WordPress 4.3 (and 4.4) compatibility.
 
 = 1.7 =
 * Japanese language support.
