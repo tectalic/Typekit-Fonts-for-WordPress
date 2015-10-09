@@ -94,7 +94,7 @@ class OM4_Typekit_Admin {
 		<p><?php _e('To use this plugin you need to sign up with Typekit, and then configure the following options.', 'typekit-fonts-for-wordpress'); ?></p>
 		<h3><?php _e('Register with Typekit', 'typekit-fonts-for-wordpress'); ?></h3>
 		<ol>
-			<li><?php printf( __('Go to <a href="%s" target="blank">typekit.com</a> and register for an account', 'typekit-fonts-for-wordpress'), 'http://typekit.com'); ?></li>
+			<li><?php printf( __('Go to <a href="%s" target="blank">typekit.com</a> and register for an account', 'typekit-fonts-for-wordpress'), 'https://typekit.com/'); ?></li>
 			<li><?php _e('Choose a few fonts to add to your account and Publish them', 'typekit-fonts-for-wordpress'); ?></li>
 			<li id="getembedcode"><?php _e('Go to the Kit Editor and get your Embed Code (link at the top right of the screen)', 'typekit-fonts-for-wordpress'); ?></li>
 		</ol>
