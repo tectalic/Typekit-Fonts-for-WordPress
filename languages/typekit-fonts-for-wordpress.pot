@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Typekit Fonts for WordPress package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Typekit Fonts for WordPress 1.8-dev\n"
+"Project-Id-Version: Typekit Fonts for WordPress 1.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/typekit-fonts-for-"
 "wordpress\n"
-"POT-Creation-Date: 2015-10-07 00:09:42+00:00\n"
+"POT-Creation-Date: 2015-10-09 01:26:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -261,8 +261,7 @@ msgid "Typekit Fonts for WordPress"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid ""
-"https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/"
+msgid "https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -277,5 +276,5 @@ msgid "OM4"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://om4.com.au/"
+msgid "https://om4.com.au/plugins/"
 msgstr ""
