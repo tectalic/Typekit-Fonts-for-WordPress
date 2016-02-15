@@ -3,7 +3,7 @@
 Plugin Name: Typekit Fonts for WordPress
 Plugin URI: https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/
 Description: Use a range of hundreds of high quality fonts on your WordPress website by integrating the <a href="http://typekit.com">Typekit</a> font service into your WordPress blog.
-Version: 1.8
+Version: 1.8.1
 Author: OM4
 Author URI: https://om4.com.au/plugins/
 Text Domain: typekit-fonts-for-wordpress
@@ -11,7 +11,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/*  Copyright 2009-2015 OM4 (email : info@om4.com.au)
+/*  Copyright 2009-2016 OM4 (email : info@om4.com.au)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,17 +31,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 class OM4_Typekit {
 	
-	var $dbVersion = 1;
+	private $dbVersion = 1;
 	
-	var $installedVersion;
+	private $installedVersion;
 	
-	var $dirname;
+	private $dirname;
 	
-	var $optionName = 'OM4_Typekit';
+	private $optionName = 'OM4_Typekit';
 	
-	var $admin;
+	private $admin;
 	
-	var $embedcode = '<script src="https://use.typekit.net/%s.js"></script>
+	public $embedcode = '<script src="https://use.typekit.net/%s.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>';
 	
 	/**
@@ -53,19 +53,19 @@ class OM4_Typekit {
 	 * 
 	 * @var string
 	 */
-	var $embedcoderegexp = '#(https?:)?//use\.typekit\.(com|net)/([a-z0-9]*)\.js#i';
+	public $embedcoderegexp = '#(https?:)?//use\.typekit\.(com|net)/([a-z0-9]*)\.js#i';
 	
 	/**
 	 * The format for the Typekit JS file URL. Used in HTTP requests to verify that the URL doesn't produce a 404 error
 	 * 
 	 * @var string
 	 */
-	var $embedcodeurl = 'https://use.typekit.net/%s.js';
+	public $embedcodeurl = 'https://use.typekit.net/%s.js';
 	
 	/*
 	 * Default settings
 	 */
-	var $settings = array(
+	private $settings = array(
 		'id'=> '',
 		'css' => ''
 	);
@@ -74,7 +74,7 @@ class OM4_Typekit {
 	 * Class Constructor
 	 *
 	 */
-	function OM4_Typekit() {
+	public function __construct() {
 		
 		// Store the name of the directory that this plugin is installed in
 		$this->dirname = str_replace('/typekit.php', '', plugin_basename(__FILE__));
@@ -98,7 +98,7 @@ class OM4_Typekit {
 	/**
 	 * Load up the relevant language pack if we're using WordPress in a different language.
 	 */
-	function LoadDomain() {
+	public function LoadDomain() {
 		load_plugin_textdomain( 'typekit-fonts-for-wordpress' );
 	}
 	
@@ -106,7 +106,7 @@ class OM4_Typekit {
 	 * Plugin Activation Tasks
 	 *
 	 */
-	function Activate() {
+	public function Activate() {
 		// There aren't really any installation tasks at the moment
 		if (!$this->installedVersion) {
 			$this->installedVersion = $this->dbVersion;
@@ -118,7 +118,7 @@ class OM4_Typekit {
 	 * Performs any upgrade tasks if required
 	 *
 	 */
-	function CheckVersion() {
+	public function CheckVersion() {
 		if ($this->installedVersion != $this->dbVersion) {
 			// Upgrade tasks
 			if ($this->installedVersion == 0) {
@@ -132,7 +132,7 @@ class OM4_Typekit {
 	 * Initialise the plugin.
 	 * Set up the admin interface if necessary
 	 */
-	function Initialise() {
+	public function Initialise() {
 		
 		$this->CheckVersion();
 		
@@ -146,7 +146,7 @@ class OM4_Typekit {
 	/**
 	 * Saves the plugin's settings to the database
 	 */
-	function SaveSettings() {
+	public function SaveSettings() {
 		$data = array_merge(array('version' => $this->installedVersion), array('settings' => $this->settings));
 		update_option($this->optionName, $data);
 	}
@@ -155,7 +155,7 @@ class OM4_Typekit {
 	 * Retrieve the Typekit embed code if the unique account id has been set
 	 * @return string The typekit embed code if the unique account ID has been set, otherwise an empty string
 	 */
-	function GetEmbedCode() {
+	public function GetEmbedCode() {
 		if ('' != $id = $this->GetAccountID()) return sprintf($this->embedcode, $id);
 		return '';
 	}
@@ -164,7 +164,7 @@ class OM4_Typekit {
 	 * Get the stored Typekit Account ID
 	 * @return string The account ID if it has been specified, otherwise an empty string
 	 */
-	function GetAccountID() {
+	public function GetAccountID() {
 		if (strlen($this->settings['id'])) return $this->settings['id'];
 		return '';
 	}
@@ -173,7 +173,7 @@ class OM4_Typekit {
 	 * Extract the unique account id from the JavaScript embed code
 	 * @param string JavaScript embed code
 	 */
-	function ParseEmbedCode($code) {
+	public function ParseEmbedCode($code) {
 		$matches = array();
 		
 		$this->settings['id'] = '';
@@ -187,7 +187,7 @@ class OM4_Typekit {
 	 * Retrieve the custom CSS rules
 	 * @return string The custom CSS rules
 	 */
-	function GetCSSRules() {
+	public function GetCSSRules() {
 		return $this->settings['css'];
 	}
 	
@@ -196,7 +196,7 @@ class OM4_Typekit {
 	 * The input is santized by stripping all HTML tags
 	 * @param string CSS code
 	 */
-	function SetCSSRules($code) {
+	public function SetCSSRules($code) {
 		$this->settings['css'] = '';
 		$code = strip_tags($code);
 		if (strlen($code)) $this->settings['css'] = $code;
@@ -205,7 +205,7 @@ class OM4_Typekit {
 	/**
 	 * Display the plugin's javascript and css code in the site's header
 	 */
-	function HeaderCode() {
+	public function HeaderCode() {
 ?>
 
 <!-- BEGIN Typekit Fonts for WordPress -->
@@ -234,5 +234,3 @@ if(defined('ABSPATH') && defined('WPINC')) {
 		$GLOBALS["OM4_Typekit"] = new OM4_Typekit();
 	}
 }
-
-?>

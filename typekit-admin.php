@@ -6,14 +6,14 @@
  */
 class OM4_Typekit_Admin {
 	
-	var $typekitInstance;
+	private $typekitInstance;
 	
 	/**
 	 * Class Constructor
 	 *
 	 * @param OM4_Typekit instance
 	 */
-	function OM4_Typekit_Admin(& $instance) {
+	public function __construct(& $instance) {
 		global $wpdb;
 		
 		$this->typekitInstance = $instance;
@@ -24,14 +24,14 @@ class OM4_Typekit_Admin {
 	/**
 	 * Set up the Admin Settings menu
 	 */
-	function AdminMenu() {
+	public function AdminMenu() {
 		add_options_page(__('Typekit Fonts', 'typekit-fonts-for-wordpress'), __('Typekit Fonts', 'typekit-fonts-for-wordpress'), 'manage_options', basename(__FILE__), array($this, 'AdminPage'));
 	}
 	
 	/**
 	 * Display the admin settings page
 	 */
-	function AdminPage() {
+	public function AdminPage() {
 		?>
 		<div class="wrap typekitsettings">
 		<style type="text/css">
@@ -155,4 +155,3 @@ class OM4_Typekit_Admin {
 		<?php 
 	}
 }
-?>
