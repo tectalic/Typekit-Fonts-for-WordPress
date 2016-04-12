@@ -11,7 +11,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-/*  Copyright 2009-2016 OM4 (email : info@om4.com.au)
+/*  Copyright 2009-2016 OM4 (email : plugins@om4.com.au)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
