@@ -3,8 +3,8 @@ Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 4.2
-Tested up to: 4.6
-Stable tag: 1.8.2
+Tested up to: 4.7
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ Installation of this plugin is simple:
 
 1. Download the plugin files and copy to your Plugins directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
-1. Go to the WordPress Dashboard, and use Settings, Typekit Fonts to enter the whole 2 lines of your Typekit embed code.
+1. Go to the WordPress Dashboard, and use "Settings", "Typekit Fonts" to enter the whole 2 lines of your Typekit embed code.
 1. If you want to setup some CSS selectors like the examples shown in the Advanced link, enter your CSS rules in the plugin settings as well.
 
 == Frequently Asked Questions ==
@@ -60,6 +60,10 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.8.3 =
+* WordPress 4.7 compatibility.
+* Add "Settings" link on plugins screen.
 
 = 1.8.2 =
 * WordPress 4.6 compatibility.

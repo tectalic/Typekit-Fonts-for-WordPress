@@ -19,6 +19,8 @@ class OM4_Typekit_Admin {
 		$this->typekitInstance = $instance;
 		
 		add_action('admin_menu', array($this, 'AdminMenu'));
+
+		add_filter( 'plugin_action_links_' . str_replace( 'typekit-admin.php', 'typekit.php', plugin_basename( __FILE__ ) ), array( $this, 'ActionLinks' ) );
 	}
 	
 	/**
@@ -26,6 +28,21 @@ class OM4_Typekit_Admin {
 	 */
 	public function AdminMenu() {
 		add_options_page(__('Typekit Fonts', 'typekit-fonts-for-wordpress'), __('Typekit Fonts', 'typekit-fonts-for-wordpress'), 'manage_options', basename(__FILE__), array($this, 'AdminPage'));
+	}
+
+	/**
+	 * Add "Settings" link to the plugin's action links on the plugins screen.
+	 *
+	 * @param $links
+	 *
+	 * @return array
+	 */
+	public function ActionLinks( $links ) {
+		$plugin_links = array(
+				'<a href="' . admin_url( 'options-general.php?page=typekit-admin.php' ) . '">' . __( 'Settings', 'typekit-fonts-for-wordpress' ) . '</a>'
+		);
+
+		return array_merge( $plugin_links, $links );
 	}
 	
 	/**
