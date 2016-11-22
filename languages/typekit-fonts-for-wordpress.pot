@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Typekit Fonts for WordPress package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Typekit Fonts for WordPress 1.8.2\n"
+"Project-Id-Version: Typekit Fonts for WordPress 1.8.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/typekit-fonts-for-wordpress\n"
-"POT-Creation-Date: 2016-08-09 03:24:14+00:00\n"
+"POT-Creation-Date: 2016-11-22 03:34:54+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,183 +12,187 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: typekit-admin.php:28
+#: typekit-admin.php:30
 msgid "Typekit Fonts"
 msgstr ""
 
-#: typekit-admin.php:57
+#: typekit-admin.php:42
+msgid "Settings"
+msgstr ""
+
+#: typekit-admin.php:74
 msgid " Please <a href=\"%s\">click here for instructions</a> on how to obtain your Typekit embed code."
 msgstr ""
 
-#: typekit-admin.php:60
+#: typekit-admin.php:77
 msgid "Invalid Typekit embed code. %s"
 msgstr ""
 
-#: typekit-admin.php:63
+#: typekit-admin.php:80
 msgid "You must enter your Typekit embed code. %s"
 msgstr ""
 
-#: typekit-admin.php:76
+#: typekit-admin.php:93
 msgid "Your Typekit embed code may be incorrect because  <a href=\"%1$s\" target=\"_blank\">%1$s</a> does not exist. Please verify that your Typekit embed code is correct. If you have just published your kit, please try again in a few minutes."
 msgstr ""
 
-#: typekit-admin.php:87
+#: typekit-admin.php:104
 msgid "Settings saved."
 msgstr ""
 
-#: typekit-admin.php:93
+#: typekit-admin.php:110
 msgid "Typekit Fonts for WordPress Settings"
 msgstr ""
 
-#: typekit-admin.php:94
+#: typekit-admin.php:111
 msgid "Typekit offer a service that allows you to select from a range of hundreds of high quality fonts for your WordPress website. The fonts are applied using the font-face standard, so they are standards compliant, fully licensed and accessible."
 msgstr ""
 
-#: typekit-admin.php:95
+#: typekit-admin.php:112
 msgid "To use this plugin you need to sign up with Typekit, and then configure the following options."
 msgstr ""
 
-#: typekit-admin.php:96
+#: typekit-admin.php:113
 msgid "Register with Typekit"
 msgstr ""
 
-#: typekit-admin.php:98
+#: typekit-admin.php:115
 msgid "Go to <a href=\"%s\" target=\"blank\">typekit.com</a> and register for an account"
 msgstr ""
 
-#: typekit-admin.php:99
+#: typekit-admin.php:116
 msgid "Choose a few fonts to add to your account and Publish them"
 msgstr ""
 
-#: typekit-admin.php:100
+#: typekit-admin.php:117
 msgid "Go to the Kit Editor and get your Embed Code (link at the top right of the screen)"
 msgstr ""
 
-#: typekit-admin.php:102
+#: typekit-admin.php:119
 msgid "Plugin Configuration"
 msgstr ""
 
-#: typekit-admin.php:104
+#: typekit-admin.php:121
 msgid "Enter the whole 2 lines of your embed code into the box below."
 msgstr ""
 
-#: typekit-admin.php:105
+#: typekit-admin.php:122
 msgid "Typekit Embed Code:"
 msgstr ""
 
-#: typekit-admin.php:107
+#: typekit-admin.php:124
 msgid "You can add selectors using the Typekit Kit Editor. Alternatively you can define your own CSS rules in your own style sheet or using the Custom CSS Rules field below (technical note: these CSS rules will be embedded in the header of each page). Look at the advanced examples shown in the Typekit editor for ideas."
 msgstr ""
 
-#: typekit-admin.php:108
+#: typekit-admin.php:125
 msgid "Custom CSS Rules:"
 msgstr ""
 
-#: typekit-admin.php:109
+#: typekit-admin.php:126
 msgid "Click here for help on CSS"
 msgstr ""
 
-#: typekit-admin.php:114
+#: typekit-admin.php:131
 msgid "Save Settings"
 msgstr ""
 
-#: typekit-admin.php:116
+#: typekit-admin.php:133
 msgid "Help"
 msgstr ""
 
-#: typekit-admin.php:117
+#: typekit-admin.php:134
 msgid "Fonts not showing?"
 msgstr ""
 
-#: typekit-admin.php:119
+#: typekit-admin.php:136
 msgid "Have you created your Typekit account, added fonts to it and <strong>pressed Publish</strong>? Fonts aren't available until they are published."
 msgstr ""
 
-#: typekit-admin.php:120
+#: typekit-admin.php:137
 msgid "Have you <strong>waited a few minutes</strong> to allow Typekit time to send your fonts out around the world? Grab a cup of coffee and try again soon."
 msgstr ""
 
-#: typekit-admin.php:121
+#: typekit-admin.php:138
 msgid "Have you <strong>added CSS rules</strong> to display your fonts? If in doubt, just try the H2 rule shown in the example and see if that works for you."
 msgstr ""
 
-#: typekit-admin.php:123
+#: typekit-admin.php:140
 msgid "CSS"
 msgstr ""
 
-#: typekit-admin.php:124
+#: typekit-admin.php:141
 msgid "You can use CSS selectors to apply your new typekit fonts. The settings for this plugin allow you to add new CSS rules to your website to activate Typekit fonts. If you are using fonts for more than just a few elements, you may find it easier to manage this way. And using your own CSS rules is a good way to access different font weights."
 msgstr ""
 
-#: typekit-admin.php:125
+#: typekit-admin.php:142
 msgid "There are many options for using CSS, but here are a few common scenarios. Note: we've used proxima-nova for our examples, you'll need to change proxima-nova to the name of your chosen font from Typekit - your added font names will be visible in the Kit Editor."
 msgstr ""
 
-#: typekit-admin.php:126
+#: typekit-admin.php:143
 msgid "Headings"
 msgstr ""
 
-#: typekit-admin.php:128
+#: typekit-admin.php:145
 msgid "If you want your Typekit fonts to be used for H2 headings, add a rule like this to your CSS Rules field:"
 msgstr ""
 
-#: typekit-admin.php:130
+#: typekit-admin.php:147
 msgid "(and you can add similar rules if you want to target other headings such as H3)"
 msgstr ""
 
-#: typekit-admin.php:132
+#: typekit-admin.php:149
 msgid "Sidebar Headings"
 msgstr ""
 
-#: typekit-admin.php:134
+#: typekit-admin.php:151
 msgid "If you want your Typekit fonts to be used for sidebar H2 headings, add a rule like this to your CSS Rules field:"
 msgstr ""
 
-#: typekit-admin.php:137
+#: typekit-admin.php:154
 msgid "Font Weights"
 msgstr ""
 
-#: typekit-admin.php:138
+#: typekit-admin.php:155
 msgid "If your Kit contains more than one weight and/or style for a particular font, you need to use numeric <code class=\"inline\">font-weight</code> values in your CSS rules to map to a font's weights."
 msgstr ""
 
-#: typekit-admin.php:139
+#: typekit-admin.php:156
 msgid "Typekit fonts have been assigned values from 100 to 900 based on information from the font's designer. Web browsers also do some guessing as to which weight it should display if the specific value isn't present. Say your font has 100, 300 and 900. If you set your text with <code class=\"inline\">font-weight: 400</code>, it will choose the most appropriate (300 in this case).<br />Note: A <code class=\"inline\">font-weight</code> value of 400 corresponds to <code class=\"inline\">font-weight: normal;</code>"
 msgstr ""
 
-#: typekit-admin.php:140
+#: typekit-admin.php:157
 msgid "See <a href=\"%s\">this help article</a> for more details."
 msgstr ""
 
-#: typekit-admin.php:141
+#: typekit-admin.php:158
 msgid "Advanced targetting of fonts with CSS selectors"
 msgstr ""
 
-#: typekit-admin.php:143
+#: typekit-admin.php:160
 msgid "You can target your fonts to specific parts of your website if you know a bit more about your current WordPress theme and where the font family is specified. All WordPress themes have a style.css file, and if you know how to check that you should be able to see the selectors in use. Or you can install Chris Pederick's Web Developer Toolbar for Firefox and use the CSS, View CSS option to see all the CSS rules in use for your theme. When you find the selectors that are used for font-family, you can create a rule just for that selector to override that rule."
 msgstr ""
 
-#: typekit-admin.php:144
+#: typekit-admin.php:161
 msgid "For example, if your theme has this CSS rule:"
 msgstr ""
 
-#: typekit-admin.php:146
+#: typekit-admin.php:163
 msgid "you could create this rule to apply your new font to the body of your website:"
 msgstr ""
 
-#: typekit-admin.php:149
+#: typekit-admin.php:166
 msgid "Where to go to get help"
 msgstr ""
 
-#: typekit-admin.php:151
+#: typekit-admin.php:168
 msgid "<a href=\"%s\" target=\"_blank\">Typekit Support</a>"
 msgstr ""
 
-#: typekit-admin.php:152
+#: typekit-admin.php:169
 msgid "<a href=\"%s\" target=\"_blank\">Sitepoint CSS Forums</a>"
 msgstr ""
 
-#: typekit-admin.php:153
+#: typekit-admin.php:170
 msgid "<a href=\"%s\" target=\"_blank\">W3Schools CSS Help</a>"
 msgstr ""
 #. Plugin Name of the plugin/theme
