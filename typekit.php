@@ -41,8 +41,8 @@ class OM4_Typekit {
 	
 	private $admin;
 	
-	public $embedcode = '<script src="https://use.typekit.net/%s.js"></script>
-<script>try{Typekit.load({ async: true });}catch(e){}</script>';
+	public $embedcode = '<script src="https://use.typekit.net/%1$s.js"></script>
+<script>try{Typekit.load({ async: %2$s });}catch(e){}</script>';
 	
 	/**
 	 * Perl-based regular expression that is used to extract the ID from the typekit embed code
@@ -61,13 +61,16 @@ class OM4_Typekit {
 	 * @var string
 	 */
 	public $embedcodeurl = 'https://use.typekit.net/%s.js';
+
+	public $embedcodeasyncregexp = '#async: (true|false)#i';
 	
 	/*
 	 * Default settings
 	 */
 	private $settings = array(
 		'id'=> '',
-		'css' => ''
+		'css' => '',
+		'async' => true,
 	);
 	
 	/**
@@ -156,7 +159,10 @@ class OM4_Typekit {
 	 * @return string The typekit embed code if the unique account ID has been set, otherwise an empty string
 	 */
 	public function GetEmbedCode() {
-		if ('' != $id = $this->GetAccountID()) return sprintf($this->embedcode, $id);
+		if ( '' != $id = $this->GetAccountID() ) {
+			$async = $this->GetAsync() ? 'true' : 'false';
+			return sprintf( $this->embedcode, $id, $async );
+		}
 		return '';
 	}
 	
@@ -168,6 +174,21 @@ class OM4_Typekit {
 		if (strlen($this->settings['id'])) return $this->settings['id'];
 		return '';
 	}
+
+	/**
+	 * Get the stored value for the async parameter.
+	 *
+	 * Defaults to true.
+	 *
+	 * @return bool
+	 */
+	public function GetAsync() {
+		if ( isset( $this->settings['async'] ) && false === $this->settings['async'] ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	
 	/**
 	 * Extract the unique account id from the JavaScript embed code
@@ -178,8 +199,16 @@ class OM4_Typekit {
 		
 		$this->settings['id'] = '';
 		// Attempt to extract the kit ID from the embed code using our regular expression
-		if ( preg_match($this->embedcoderegexp, $code, $matches) && 4 == sizeof($matches) ) {
+		if ( preg_match( $this->embedcoderegexp, $code, $matches ) && 4 == sizeof( $matches ) ) {
 			$this->settings['id'] = $matches[3];
+		}
+
+		if ( preg_match( $this->embedcodeasyncregexp, $code, $matches ) && 2 == sizeof( $matches ) ) {
+			if ( 'false' == $matches[1] ) {
+				$this->settings['async'] = false;
+			} else {
+				$this->settings['async'] = true;
+			}
 		}
 	}
 	
