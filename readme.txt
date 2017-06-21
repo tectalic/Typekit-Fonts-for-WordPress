@@ -3,8 +3,8 @@ Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 4.2
-Tested up to: 4.7
-Stable tag: 1.8.3
+Tested up to: 4.8
+Stable tag: 1.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ To use this plugin you need to sign up with Typekit, install this plugin and the
 
 Detailed instructions are available on the plugin's settings page.
 
-This plugin uses [Typekit's asynchronous embed code](http://blog.typekit.com/2015/08/04/new-embed-code-for-asynchronous-font-loading/), which doesn't block the rendering of the page while fonts are loading.
+This plugin by default uses [Typekit's asynchronous embed code](http://blog.typekit.com/2015/08/04/new-embed-code-for-asynchronous-font-loading/), which doesn't block the rendering of the page while fonts are loading. However if you prefer, you can use the synchronous tracking code by setting the async parameter to false.
 
 Compatible with WordPress Multisite.
 
@@ -60,6 +60,10 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.8.4 =
+* Add support for Typekit's synchronous tracking code by setting async to false. Useful for avoiding FOUT.
+* WordPress 4.8 compatibility.
 
 = 1.8.3 =
 * WordPress 4.7 compatibility.
