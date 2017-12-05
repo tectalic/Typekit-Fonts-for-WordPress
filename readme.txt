@@ -3,8 +3,9 @@ Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 4.2
-Tested up to: 4.8
-Stable tag: 1.8.4
+Tested up to: 4.9
+Stable tag: 1.9.0
+Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +21,7 @@ To use this plugin you need to sign up with Typekit, install this plugin and the
 
 Detailed instructions are available on the plugin's settings page.
 
-This plugin by default uses [Typekit's asynchronous embed code](http://blog.typekit.com/2015/08/04/new-embed-code-for-asynchronous-font-loading/), which doesn't block the rendering of the page while fonts are loading. However if you prefer, you can use the synchronous tracking code by setting the async parameter to false.
+This plugin by default uses [Typekit's CSS embed code](https://blog.typekit.com/2017/11/16/new-on-typekit-load-web-fonts-with-css/). However if you prefer, you can use the asynchronous Javascript embed.
 
 Compatible with WordPress Multisite.
 
@@ -38,7 +39,7 @@ Installation of this plugin is simple:
 
 1. Download the plugin files and copy to your Plugins directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
-1. Go to the WordPress Dashboard, and use "Settings", "Typekit Fonts" to enter the whole 2 lines of your Typekit embed code.
+1. Go to the WordPress Dashboard, and use "Settings", "Typekit Fonts" to enter your kit ID and embed method.
 1. If you want to setup some CSS selectors like the examples shown in the Advanced link, enter your CSS rules in the plugin settings as well.
 
 == Frequently Asked Questions ==
@@ -53,13 +54,19 @@ Yes, see the plugin's description for more information.
 
 = Which web browser(s) does Typekit support? =
 
-Please see [this page](http://help.typekit.com/customer/portal/articles/6786-browser-and-os-support) for information on [Typekit web browser support](http://help.typekit.com/customer/portal/articles/6786-browser-and-os-support).
+Please see [this page](https://helpx.adobe.com/typekit/using/browser-os-support.html) for information on [Typekit web browser support](https://helpx.adobe.com/typekit/using/browser-os-support.html).
 
 == Screenshots ==
 1. Settings/configuration page
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.9.0 =
+* Add support for Typekit's new CSS embed method.
+* Add support for Typekit's improved Advanced Javascript embed code.
+* Simplified settings screen (just enter your Kit ID rather than your full embed code).
+* WordPress 4.9 compatibility.
 
 = 1.8.4 =
 * Add support for Typekit's synchronous tracking code by setting async to false. Useful for avoiding FOUT.
@@ -138,6 +145,9 @@ Please see [this page](http://help.typekit.com/customer/portal/articles/6786-bro
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.9.0 =
+* Simplified settings screen, add support for Typekit's new CSS embed method.
 
 = 1.8 =
 * Support for translate.wordpress.org language packs.

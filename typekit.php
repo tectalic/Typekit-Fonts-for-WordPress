@@ -3,7 +3,7 @@
 Plugin Name: Typekit Fonts for WordPress
 Plugin URI: https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/
 Description: Use a range of hundreds of high quality fonts on your WordPress website by integrating the <a href="http://typekit.com">Typekit</a> font service into your WordPress blog.
-Version: 1.8.4
+Version: 1.9.0
 Author: OM4
 Author URI: https://om4.com.au/plugins/
 Text Domain: typekit-fonts-for-wordpress
@@ -40,37 +40,41 @@ class OM4_Typekit {
 	private $optionName = 'OM4_Typekit';
 	
 	private $admin;
-	
-	public $embedcode = '<script src="https://use.typekit.net/%1$s.js"></script>
-<script>try{Typekit.load({ async: %2$s });}catch(e){}</script>';
-	
-	/**
-	 * Perl-based regular expression that is used to extract the ID from the typekit embed code
-	 * 
-	 * The ID can contain numbers and letters only
-	 *
-	 * Ref: http://core.trac.wordpress.org/changeset/21166
-	 * 
-	 * @var string
-	 */
-	public $embedcoderegexp = '#(https?:)?//use\.typekit\.(com|net)/([a-z0-9]*)\.js#i';
-	
-	/**
-	 * The format for the Typekit JS file URL. Used in HTTP requests to verify that the URL doesn't produce a 404 error
-	 * 
-	 * @var string
-	 */
-	public $embedcodeurl = 'https://use.typekit.net/%s.js';
 
-	public $embedcodeasyncregexp = '#async: (true|false)#i';
-	
+	public $embedcode_advanced = '<script>
+  (function(d) {
+    var config = {
+      kitId: \'%1$s\',
+      scriptTimeout: 3000,
+      async: %2$s
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src=\'https://use.typekit.net/\'+config.kitId+\'.js\';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>';
+
+	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
+
+	public $kitid_regexp = '#([a-z0-9]*)#i';
+
+	/**
+	 * The format for the Typekit CSS file URL. Used in HTTP requests to verify that the URL doesn't produce a 404 error
+	 * 
+	 * @var string
+	 */
+	public $embedcodeurl = 'https://use.typekit.net/%s.css';
+
+	const EMBED_METHOD_CSS = 'css';
+
+	const EMBED_METHOD_JAVASCRIPT = 'js';
+
 	/*
 	 * Default settings
 	 */
 	private $settings = array(
 		'id'=> '',
+		'method' => self::EMBED_METHOD_CSS,
 		'css' => '',
-		'async' => true,
+		'async' => '',
 	);
 	
 	/**
@@ -160,14 +164,22 @@ class OM4_Typekit {
 	 */
 	public function GetEmbedCode() {
 		if ( '' != $id = $this->GetAccountID() ) {
-			$async = $this->GetAsync() ? 'true' : 'false';
-			return sprintf( $this->embedcode, $id, $async );
+
+		    switch( $this->GetEmbedMethod() ) {
+                case self::EMBED_METHOD_CSS:
+                    return sprintf( $this->embedcode_css, $id );
+                    break;
+                case self::EMBED_METHOD_JAVASCRIPT:
+                    $async = $this->GetAsync() ? 'true' : 'false';
+                    return sprintf( $this->embedcode_advanced, $id, $async );
+                    break;
+            }
 		}
 		return '';
 	}
 	
 	/**
-	 * Get the stored Typekit Account ID
+	 * Get the stored Typekit Account/Kit ID
 	 * @return string The account ID if it has been specified, otherwise an empty string
 	 */
 	public function GetAccountID() {
@@ -189,26 +201,38 @@ class OM4_Typekit {
 			return true;
 		}
 	}
-	
-	/**
-	 * Extract the unique account id from the JavaScript embed code
-	 * @param string JavaScript embed code
-	 */
-	public function ParseEmbedCode($code) {
-		$matches = array();
-		
-		$this->settings['id'] = '';
-		// Attempt to extract the kit ID from the embed code using our regular expression
-		if ( preg_match( $this->embedcoderegexp, $code, $matches ) && 4 == sizeof( $matches ) ) {
-			$this->settings['id'] = $matches[3];
-		}
 
-		if ( preg_match( $this->embedcodeasyncregexp, $code, $matches ) && 2 == sizeof( $matches ) && 'false' === $matches[1] ) {
-				$this->settings['async'] = false;
+	/**
+	 * Get the stored value for the embed method.
+	 *
+	 * @return bool
+	 */
+	public function GetEmbedMethod() {
+		if ( isset( $this->settings['method'] ) ) {
+			return $this->settings['method'];
 		} else {
-			$this->settings['async'] = true;
+		    // No embed method chosen, so default to the JS method
+            return self::EMBED_METHOD_JAVASCRIPT;
 		}
 	}
+
+	public function ParseKitID( $id ) {
+        if ( preg_match( $this->kitid_regexp, $id, $matches ) && 2 == sizeof( $matches ) ) {
+            $this->settings['id'] = $matches[0];
+        } else {
+            $this->settings['id'] = '';
+        }
+    }
+
+    public function ParseEmbedMethod( $method ) {
+	    if ( $method == self::EMBED_METHOD_JAVASCRIPT ) {
+	        $this->settings['method'] = self::EMBED_METHOD_JAVASCRIPT;
+        } else {
+	        $this->settings['method'] = self::EMBED_METHOD_CSS;
+	        $this->settings['async'] = '';
+        }
+    }
+
 	
 	/*
 	 * Retrieve the custom CSS rules

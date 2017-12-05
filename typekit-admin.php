@@ -62,9 +62,12 @@ class OM4_Typekit_Admin {
 		<?php
 		if (isset($_POST['submit']) && check_admin_referer('typekit-fonts-for-wordpress-save-settings') && current_user_can('manage_options')) {
 			// settings page has been submitted
-			
-			if (isset($_POST['embedcode'])) {
-				$this->typekitInstance->ParseEmbedCode(stripslashes($_POST['embedcode']));
+
+			if ( isset( $_POST['kitid'] ) && isset( $_POST['method'] ) ) {
+
+			    $this->typekitInstance->ParseKitID(stripslashes($_POST['kitid']));
+				$this->typekitInstance->ParseEmbedMethod(stripslashes($_POST['method']));
+
 				$id = $this->typekitInstance->GetAccountID();
 				if ($id == '') {
 					// embed code is empty
@@ -72,12 +75,12 @@ class OM4_Typekit_Admin {
 					<div id="error" class="error"><p>
 					<?php
 					$instructions = sprintf( __(' Please <a href="%s">click here for instructions</a> on how to obtain your Typekit embed code.', 'typekit-fonts-for-wordpress'), '#getembedcode');
-					if (strlen($_POST['embedcode'])) {
+					if (strlen($_POST['kitid'])) {
 						// an embed code has been submitted, but was rejected
-						printf(__('Invalid Typekit embed code. %s', 'typekit-fonts-for-wordpress'), $instructions);
+						printf(__('Invalid Typekit Kit ID. %s', 'typekit-fonts-for-wordpress'), $instructions);
 					} else {
-						// no embed code was submitted
-						printf(__('You must enter your Typekit embed code. %s', 'typekit-fonts-for-wordpress'), $instructions);
+						// no kit ID was submitted
+						printf(__('You must enter your Typekit Kit ID. %s', 'typekit-fonts-for-wordpress'), $instructions);
 					}
 					?>
 					</p></div>
@@ -90,7 +93,7 @@ class OM4_Typekit_Admin {
 					if ( 404 == wp_remote_retrieve_response_code( $response ) ) {
 						?>
 						<div id="error" class="error"><p>
-							<?php printf( __( 'Your Typekit embed code may be incorrect because  <a href="%1$s" target="_blank">%1$s</a> does not exist. Please verify that your Typekit embed code is correct. If you have just published your kit, please try again in a few minutes.', 'typekit-fonts-for-wordpress'), esc_url( $url ) ); ?>
+							<?php printf( __( 'Your Typekit Kit ID may be incorrect because  <a href="%1$s" target="_blank">%1$s</a> does not exist. Please verify that your Typekit Kit ID correct. If you have just published your kit, please try again in a few minutes.', 'typekit-fonts-for-wordpress'), esc_url( $url ) ); ?>
 						</p></div>
 						<?php
 					}
@@ -112,15 +115,23 @@ class OM4_Typekit_Admin {
 		<p><?php _e('To use this plugin you need to sign up with Typekit, and then configure the following options.', 'typekit-fonts-for-wordpress'); ?></p>
 		<h3><?php _e('Register with Typekit', 'typekit-fonts-for-wordpress'); ?></h3>
 		<ol>
-			<li><?php printf( __('Go to <a href="%s" target="blank">typekit.com</a> and register for an account', 'typekit-fonts-for-wordpress'), 'https://typekit.com/'); ?></li>
-			<li><?php _e('Choose a few fonts to add to your account and Publish them', 'typekit-fonts-for-wordpress'); ?></li>
-			<li id="getembedcode"><?php _e('Go to the Kit Editor and get your Embed Code (link at the top right of the screen)', 'typekit-fonts-for-wordpress'); ?></li>
+			<li><?php printf( __('Go to <a href="%s" target="blank">typekit.com</a> and register for an account.', 'typekit-fonts-for-wordpress'), 'https://typekit.com/'); ?></li>
+			<li><?php _e('Choose a few fonts to add to your account and Publish them.', 'typekit-fonts-for-wordpress'); ?></li>
+			<li id="getembedcode"><?php _e('Go to the Kit Editor (link at the top right of the screen) then click on the Embed Code option.', 'typekit-fonts-for-wordpress'); ?></li>
 		</ol>
 		<h3><?php _e('Plugin Configuration', 'typekit-fonts-for-wordpress'); ?></h3>
 		<ol start="4">
-			<li><?php _e('Enter the whole 2 lines of your embed code into the box below.', 'typekit-fonts-for-wordpress'); ?><br />
-				<p class="option"><label for="embedcode"><?php _e('Typekit Embed Code:', 'typekit-fonts-for-wordpress'); ?></label> <textarea name="embedcode" rows="3" cols="80"><?php echo esc_textarea( $this->typekitInstance->GetEmbedCode() ); ?></textarea><br />
+			<li><?php _e('Enter your Typekit Kit ID (shown at the bottom of the Embed Code screen).', 'typekit-fonts-for-wordpress'); ?><br />
+				<p class="option"><label for="kitid"><?php _e('Typekit Kit ID:', 'typekit-fonts-for-wordpress'); ?></label> <input type="text" name="kitid" value="<?php echo esc_attr( $this->typekitInstance->GetAccountID() ); ?>" /><br />
 			</li>
+            <li><?php _e('Choose your Preferred Embed Method.', 'typekit-fonts-for-wordpress'); ?><br />
+				<p class="option"><label for="method"><?php _e('Embed Method:', 'typekit-fonts-for-wordpress'); ?></label>
+                    <select name="method">
+                        <option value="css"<?php echo selected( $this->typekitInstance->GetEmbedMethod(), 'css' ); ?>><?php _e('CSS Link (Simplest)', 'typekit-fonts-for-wordpress'); ?></option>
+                        <option value="js"<?php echo selected( $this->typekitInstance->GetEmbedMethod(), 'js' ); ?>><?php _e('Javascript (Advanced)', 'typekit-fonts-for-wordpress'); ?></option>
+                    </select>
+			</li>
+
 			<li><?php _e('You can add selectors using the Typekit Kit Editor. Alternatively you can define your own CSS rules in your own style sheet or using the Custom CSS Rules field below (technical note: these CSS rules will be embedded in the header of each page). Look at the advanced examples shown in the Typekit editor for ideas.', 'typekit-fonts-for-wordpress'); ?>
 				<p class="option"><label for="css"><?php _e('Custom CSS Rules:', 'typekit-fonts-for-wordpress'); ?></label> <textarea name="css" rows="10" cols="80"><?php echo esc_textarea( $this->typekitInstance->GetCSSRules() ); ?></textarea><br />
 				<a href="#help-css"><?php _e('Click here for help on CSS', 'typekit-fonts-for-wordpress'); ?></a>
