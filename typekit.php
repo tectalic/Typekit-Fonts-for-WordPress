@@ -29,18 +29,51 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/**
+ * Typekit functionality.
+ */
 class OM4_Typekit {
 
-	private $dbVersion = 1;
+	/**
+	 * The version of the database schema used by this plugin
+	 *
+	 * @var int
+	 */
+	private $db_version = 1;
 
-	private $installedVersion;
+	/**
+	 * The version of the plugin that is currently installed
+	 *
+	 * @var int
+	 */
+	private $installed_version;
 
+	/**
+	 * The name of the directory where this plugin is installed
+	 *
+	 * @var string
+	 */
 	private $dirname;
 
-	private $optionName = 'OM4_Typekit';
+	/**
+	 * The name of the option used to store the plugin's settings
+	 *
+	 * @var string
+	 */
+	private $option_name = 'OM4_Typekit';
 
+	/**
+	 * The admin interface instance
+	 *
+	 * @var OM4_Typekit_Admin
+	 */
 	private $admin;
 
+	/**
+	 * The format for the Typekit JavaScript embed code
+	 *
+	 * @var string
+	 */
 	public $embedcode_advanced = '<script>
   (function(d) {
     var config = {
@@ -52,8 +85,18 @@ class OM4_Typekit {
   })(document);
 </script>';
 
+	/**
+	 * The format for the Typekit CSS file URL
+	 *
+	 * @var string
+	 */
 	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
 
+	/**
+	 * The regular expression used to validate the Typekit Account/Kit ID
+	 *
+	 * @var string
+	 */
 	public $kitid_regexp = '#([a-z0-9]*)#i';
 
 	/**
@@ -67,7 +110,7 @@ class OM4_Typekit {
 
 	const EMBED_METHOD_JAVASCRIPT = 'js';
 
-	/*
+	/**
 	 * Default settings
 	 */
 	private $settings = array(
@@ -82,52 +125,52 @@ class OM4_Typekit {
 	 */
 	public function __construct() {
 
-		// Store the name of the directory that this plugin is installed in
+		// Store the name of the directory where this plugin is installed.
 		$this->dirname = str_replace( '/typekit.php', '', plugin_basename( __FILE__ ) );
 
-		register_activation_hook( __FILE__, array( $this, 'Activate' ) );
+		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
-		add_action( 'init', array( $this, 'Initialise' ) );
+		add_action( 'init', array( $this, 'initialise' ) );
 
-		add_action( 'plugins_loaded', array( $this, 'LoadDomain' ) );
+		add_action( 'plugins_loaded', array( $this, 'load_domain' ) );
 
-		add_action( 'wp_head', array( $this, 'HeaderCode' ), 99 );
+		add_action( 'wp_head', array( $this, 'header_code' ), 99 );
 
-		$data = get_option( $this->optionName );
+		$data = get_option( $this->option_name );
 		if ( is_array( $data ) ) {
-			$this->installedVersion = intval( $data['version'] );
-			$this->settings         = $data['settings'];
+			$this->installed_version = intval( $data['version'] );
+			$this->settings          = $data['settings'];
 		}
 	}
 
 	/**
 	 * Load up the relevant language pack if we're using WordPress in a different language.
 	 */
-	public function LoadDomain() {
+	public function load_domain() {
 		load_plugin_textdomain( 'typekit-fonts-for-wordpress' );
 	}
 
 	/**
 	 * Plugin Activation Tasks
 	 */
-	public function Activate() {
-		// There aren't really any installation tasks at the moment
-		if ( ! $this->installedVersion ) {
-			$this->installedVersion = $this->dbVersion;
-			$this->SaveSettings();
+	public function activate() {
+		// There aren't really any installation tasks at the moment.
+		if ( ! $this->installed_version ) {
+			$this->installed_version = $this->db_version;
+			$this->save_settings();
 		}
 	}
 
 	/**
 	 * Performs any upgrade tasks if required
 	 */
-	public function CheckVersion() {
-		if ( $this->installedVersion != $this->dbVersion ) {
-			// Upgrade tasks
-			if ( $this->installedVersion == 0 ) {
-				++$this->installedVersion;
+	public function check_version() {
+		if ( $this->installed_version !== $this->db_version ) {
+			// Upgrade tasks.
+			if ( 0 === $this->installed_version ) {
+				++$this->installed_version;
 			}
-			$this->SaveSettings();
+			$this->save_settings();
 		}
 	}
 
@@ -135,12 +178,12 @@ class OM4_Typekit {
 	 * Initialise the plugin.
 	 * Set up the admin interface if necessary
 	 */
-	public function Initialise() {
+	public function initialise() {
 
-		$this->CheckVersion();
+		$this->check_version();
 
 		if ( is_admin() ) {
-			// WP Dashboard
+			// WP Dashboard.
 			require_once 'typekit-admin.php';
 			$this->admin = new OM4_Typekit_Admin( $this );
 		}
@@ -149,26 +192,25 @@ class OM4_Typekit {
 	/**
 	 * Saves the plugin's settings to the database
 	 */
-	public function SaveSettings() {
-		$data = array_merge( array( 'version' => $this->installedVersion ), array( 'settings' => $this->settings ) );
-		update_option( $this->optionName, $data );
+	public function save_settings() {
+		$data = array_merge( array( 'version' => $this->installed_version ), array( 'settings' => $this->settings ) );
+		update_option( $this->option_name, $data );
 	}
 
-	/*
+	/**
 	 * Retrieve the Typekit embed code if the unique account id has been set
-	 * @return string The typekit embed code if the unique account ID has been set, otherwise an empty string
+	 *
+	 * @return string The typekit embed code if the unique account ID has been set, otherwise an empty string.
 	 */
-	public function GetEmbedCode() {
-		if ( '' != $id = $this->GetAccountID() ) {
-
-			switch ( $this->GetEmbedMethod() ) {
+	public function get_embed_code() {
+		$id = $this->get_account_id();
+		if ( '' !== $id ) {
+			switch ( $this->get_embed_method() ) {
 				case self::EMBED_METHOD_CSS:
 					return sprintf( $this->embedcode_css, $id );
-					break;
 				case self::EMBED_METHOD_JAVASCRIPT:
-					$async = $this->GetAsync() ? 'true' : 'false';
+					$async = $this->get_async() ? 'true' : 'false';
 					return sprintf( $this->embedcode_advanced, $id, $async );
-					break;
 			}
 		}
 		return '';
@@ -179,7 +221,7 @@ class OM4_Typekit {
 	 *
 	 * @return string The account ID if it has been specified, otherwise an empty string
 	 */
-	public function GetAccountID() {
+	public function get_account_id() {
 		if ( strlen( $this->settings['id'] ) ) {
 			return $this->settings['id'];
 		}
@@ -193,7 +235,7 @@ class OM4_Typekit {
 	 *
 	 * @return bool
 	 */
-	public function GetAsync() {
+	public function get_async() {
 		if ( isset( $this->settings['async'] ) && false === $this->settings['async'] ) {
 			return false;
 		} else {
@@ -206,25 +248,37 @@ class OM4_Typekit {
 	 *
 	 * @return bool
 	 */
-	public function GetEmbedMethod() {
+	public function get_embed_method() {
 		if ( isset( $this->settings['method'] ) ) {
 			return $this->settings['method'];
 		} else {
-			// No embed method chosen, so default to the JS method
+			// No embed method chosen, so default to the JS method.
 			return self::EMBED_METHOD_JAVASCRIPT;
 		}
 	}
 
-	public function ParseKitID( $id ) {
-		if ( preg_match( $this->kitid_regexp, $id, $matches ) && 2 == sizeof( $matches ) ) {
+	/**
+	 * Parse and save the Typekit Account/Kit ID
+	 *
+	 * @param string $id The Typekit Account/Kit ID.
+	 * @return void
+	 */
+	public function parse_kit_id( $id ) {
+		if ( preg_match( $this->kitid_regexp, $id, $matches ) && 2 === count( $matches ) ) {
 			$this->settings['id'] = $matches[0];
 		} else {
 			$this->settings['id'] = '';
 		}
 	}
 
-	public function ParseEmbedMethod( $method ) {
-		if ( $method == self::EMBED_METHOD_JAVASCRIPT ) {
+	/**
+	 * Parse and save the embed method.
+	 *
+	 * @param string $method Embed method.
+	 * @return void
+	 */
+	public function parse_embed_method( $method ) {
+		if ( self::EMBED_METHOD_JAVASCRIPT === $method ) {
 			$this->settings['method'] = self::EMBED_METHOD_JAVASCRIPT;
 		} else {
 			$this->settings['method'] = self::EMBED_METHOD_CSS;
@@ -233,23 +287,24 @@ class OM4_Typekit {
 	}
 
 
-	/*
+	/**
 	 * Retrieve the custom CSS rules
+	 *
 	 * @return string The custom CSS rules
 	 */
-	public function GetCSSRules() {
+	public function get_css_rules() {
 		return $this->settings['css'];
 	}
 
 	/**
 	 * Parse and save the custom css rules.
-	 * The input is santized by stripping all HTML tags
+	 * The input is sanitized by stripping all HTML tags
 	 *
-	 * @param string CSS code
+	 * @param string $code CSS code.
 	 */
-	public function SetCSSRules( $code ) {
+	public function set_css_rules( $code ) {
 		$this->settings['css'] = '';
-		$code                  = strip_tags( $code );
+		$code                  = wp_strip_all_tags( $code );
 		if ( strlen( $code ) ) {
 			$this->settings['css'] = $code;
 		}
@@ -258,12 +313,12 @@ class OM4_Typekit {
 	/**
 	 * Display the plugin's javascript and css code in the site's header
 	 */
-	public function HeaderCode() {
+	public function header_code() {
 		?>
 
 <!-- BEGIN Typekit Fonts for WordPress -->
 		<?php
-		echo $this->GetEmbedCode();
+		echo $this->get_embed_code();
 
 		if ( strlen( $this->settings['css'] ) ) {
 			?>
