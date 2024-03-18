@@ -143,33 +143,3 @@ Please see this page (https://helpx.adobe.com/fonts/using/browser-os-support.htm
 
 = 1.0.0 =
 * Initial release.
-
-== Upgrade Notice ==
-
-= 1.9.0 =
-* Simplified settings screen, add support for Typekit's new CSS embed method.
-
-= 1.8 =
-* Support for translate.wordpress.org language packs.
-* WordPress 4.3 (and 4.4) compatibility.
-
-= 1.7 =
-* Japanese language support.
-
-= 1.5 =
-* WordPress 3.5 compatibility.
-
-= 1.4 =
-* Adds support for Typekit's new embed code format.
-
-= 1.3.1 =
-* WordPress 3.4 compatibility, clarify license as GPLv2 or later.
-
-= 1.3 =
-* WordPress 3.3 compatibility.
-
-= 1.2 =
-* WordPress 3.2 compatibility, translation/localization improvements, invalid HTML fixes.
-
-= 1.1 =
-* WordPress 3.1 compatibility.
