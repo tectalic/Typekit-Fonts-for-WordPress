@@ -4,8 +4,8 @@ includes:
 parameters:
 	paths:
 		- typekit-admin.php
-    - typekit.php
+		- typekit.php
 	fileExtensions:
 		- php
-	level: 5
+	level: max
 	treatPhpDocTypesAsCertain: false

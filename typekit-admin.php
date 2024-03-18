@@ -29,13 +29,15 @@ class OM4_Typekit_Admin {
 
 	/**
 	 * Set up the Admin Settings menu
+	 *
+	 * @return void
 	 */
 	public function admin_menu() {
 		add_options_page(
 			__( 'Adobe Fonts (formerly Typekit)', 'typekit-fonts-for-wordpress' ),
 			__( 'Adobe Fonts', 'typekit-fonts-for-wordpress' ),
 			'manage_options',
-			basename( __FILE__ ),
+			'typekit-admin',
 			array( $this, 'admin_page' )
 		);
 	}
@@ -43,9 +45,9 @@ class OM4_Typekit_Admin {
 	/**
 	 * Add "Settings" link to the plugin's action links on the plugins screen.
 	 *
-	 * @param array $links The existing links.
+	 * @param string[] $links The existing links.
 	 *
-	 * @return array
+	 * @return string[] The modified links.
 	 */
 	public function action_links( $links ) {
 		$plugin_links = array(
@@ -57,6 +59,8 @@ class OM4_Typekit_Admin {
 
 	/**
 	 * Display the admin settings page
+	 *
+	 * @return void
 	 */
 	public function admin_page() {
 		?>
@@ -153,8 +157,8 @@ class OM4_Typekit_Admin {
 			<li><?php esc_html_e( 'Choose your Preferred Embed Method.', 'typekit-fonts-for-wordpress' ); ?><br />
 				<p class="option"><label for="method"><?php esc_attr_e( 'Embed Method:', 'typekit-fonts-for-wordpress' ); ?></label>
 					<select name="method">
-						<option value="css"<?php echo selected( $this->typekit_instance->get_embed_method(), 'css' ); ?>><?php esc_html_e( 'CSS Link (Simplest)', 'typekit-fonts-for-wordpress' ); ?></option>
-						<option value="js"<?php echo selected( $this->typekit_instance->get_embed_method(), 'js' ); ?>><?php esc_html_e( 'Javascript (Advanced)', 'typekit-fonts-for-wordpress' ); ?></option>
+						<option value="css"<?php echo selected( $this->typekit_instance->get_embed_method(), 'css', false ); ?>><?php esc_html_e( 'CSS Link (Simplest)', 'typekit-fonts-for-wordpress' ); ?></option>
+						<option value="js"<?php echo selected( $this->typekit_instance->get_embed_method(), 'js', false ); ?>><?php esc_html_e( 'Javascript (Advanced)', 'typekit-fonts-for-wordpress' ); ?></option>
 					</select>
 			</li>
 

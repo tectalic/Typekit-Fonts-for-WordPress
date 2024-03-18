@@ -49,25 +49,11 @@ class OM4_Typekit {
 	private $installed_version;
 
 	/**
-	 * The name of the directory where this plugin is installed
-	 *
-	 * @var string
-	 */
-	private $dirname;
-
-	/**
 	 * The name of the option used to store the plugin's settings
 	 *
 	 * @var string
 	 */
 	private $option_name = 'OM4_Typekit';
-
-	/**
-	 * The admin interface instance
-	 *
-	 * @var OM4_Typekit_Admin
-	 */
-	private $admin;
 
 	/**
 	 * The format for the Adobe Fonts JavaScript embed code
@@ -112,6 +98,8 @@ class OM4_Typekit {
 
 	/**
 	 * Default settings
+	 *
+	 * @var array<string,string>
 	 */
 	private $settings = array(
 		'id'     => '',
@@ -124,10 +112,6 @@ class OM4_Typekit {
 	 * Class Constructor
 	 */
 	public function __construct() {
-
-		// Store the name of the directory where this plugin is installed.
-		$this->dirname = str_replace( '/typekit.php', '', plugin_basename( __FILE__ ) );
-
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
 		add_action( 'init', array( $this, 'initialise' ) );
@@ -145,6 +129,8 @@ class OM4_Typekit {
 
 	/**
 	 * Load up the relevant language pack if we're using WordPress in a different language.
+	 *
+	 * @return void
 	 */
 	public function load_domain() {
 		load_plugin_textdomain( 'typekit-fonts-for-wordpress' );
@@ -152,6 +138,8 @@ class OM4_Typekit {
 
 	/**
 	 * Plugin Activation Tasks
+	 *
+	 * @return void
 	 */
 	public function activate() {
 		// There aren't really any installation tasks at the moment.
@@ -163,6 +151,8 @@ class OM4_Typekit {
 
 	/**
 	 * Performs any upgrade tasks if required
+	 *
+	 * @return void
 	 */
 	public function check_version() {
 		if ( $this->installed_version !== $this->db_version ) {
@@ -177,6 +167,8 @@ class OM4_Typekit {
 	/**
 	 * Initialise the plugin.
 	 * Set up the admin interface if necessary
+	 *
+	 * @return void
 	 */
 	public function initialise() {
 
@@ -185,12 +177,14 @@ class OM4_Typekit {
 		if ( is_admin() ) {
 			// WP Dashboard.
 			require_once 'typekit-admin.php';
-			$this->admin = new OM4_Typekit_Admin( $this );
+			new OM4_Typekit_Admin( $this );
 		}
 	}
 
 	/**
 	 * Saves the plugin's settings to the database
+	 *
+	 * @return void
 	 */
 	public function save_settings() {
 		$data = array_merge( array( 'version' => $this->installed_version ), array( 'settings' => $this->settings ) );
@@ -246,7 +240,7 @@ class OM4_Typekit {
 	/**
 	 * Get the stored value for the embed method.
 	 *
-	 * @return bool
+	 * @return string
 	 */
 	public function get_embed_method() {
 		if ( isset( $this->settings['method'] ) ) {
@@ -301,6 +295,7 @@ class OM4_Typekit {
 	 * The input is sanitized by stripping all HTML tags
 	 *
 	 * @param string $code CSS code.
+	 * @return void
 	 */
 	public function set_css_rules( $code ) {
 		$this->settings['css'] = '';
@@ -312,6 +307,8 @@ class OM4_Typekit {
 
 	/**
 	 * Display the plugin's javascript and css code in the site's header
+	 *
+	 * @return void
 	 */
 	public function header_code() {
 		?>
