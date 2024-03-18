@@ -32,8 +32,8 @@ class OM4_Typekit_Admin {
 	 */
 	public function admin_menu() {
 		add_options_page(
-			__( 'Typekit Fonts', 'typekit-fonts-for-wordpress' ),
-			__( 'Typekit Fonts', 'typekit-fonts-for-wordpress' ),
+			__( 'Adobe Fonts (formerly Typekit)', 'typekit-fonts-for-wordpress' ),
+			__( 'Adobe Fonts', 'typekit-fonts-for-wordpress' ),
 			'manage_options',
 			basename( __FILE__ ),
 			array( $this, 'admin_page' )
@@ -88,22 +88,22 @@ class OM4_Typekit_Admin {
 					?>
 					<div id="error" class="error"><p>
 					<?php
-					// Translators: %s is a link to the Typekit instructions.
-					$instructions = sprintf( esc_html__( ' Please <a href="%s">click here for instructions</a> on how to obtain your Typekit embed code.', 'typekit-fonts-for-wordpress' ), '#getembedcode' );
+					// Translators: %s is a link to the Adobe Fonts instructions.
+					$instructions = sprintf( esc_html__( ' Please <a href="%s">click here for instructions</a> on how to obtain your Adobe Fonts embed code.', 'typekit-fonts-for-wordpress' ), '#getembedcode' );
 					if ( strlen( $kitid ) ) {
 						// An embed code has been submitted, but was rejected.
-						// Translators: %s is a link to the Typekit instructions.
-						printf( esc_html__( 'Invalid Typekit Kit ID. %s', 'typekit-fonts-for-wordpress' ), $instructions );
+						// Translators: %s is a link to the Adobe Fonts instructions.
+						printf( esc_html__( 'Invalid Adobe Fonts Kit ID. %s', 'typekit-fonts-for-wordpress' ), $instructions );
 					} else {
 						// No kit ID was submitted.
-						// Translators: %s is a link to the Typekit instructions.
-						printf( esc_html__( 'You must enter your Typekit Kit ID. %s', 'typekit-fonts-for-wordpress' ), $instructions );
+						// Translators: %s is a link to the Adobe Fonts instructions.
+						printf( esc_html__( 'You must enter your Adobe Fonts Kit ID. %s', 'typekit-fonts-for-wordpress' ), $instructions );
 					}
 					?>
 					</p></div>
 					<?php
 				} else {
-					// Ensure the Typekit account ID maps to a valid JS file on Typekit's servers (ie doesn't return a 404 error).
+					// Ensure the Adobe Fonts account ID maps to a valid JS file on Adobe Fonts' servers (ie doesn't return a 404 error).
 					$url      = sprintf( $this->typekit_instance->embedcodeurl, $id );
 					$response = wp_remote_head( $url );
 
@@ -111,8 +111,8 @@ class OM4_Typekit_Admin {
 						?>
 						<div id="error" class="error"><p>
 							<?php
-								// Translators: %s is a link to the Typekit Embed Code page.
-								printf( esc_html__( 'Your Typekit Kit ID may be incorrect because  <a href="%1$s" target="_blank">%1$s</a> does not exist. Please verify that your Typekit Kit ID correct. If you have just published your kit, please try again in a few minutes.', 'typekit-fonts-for-wordpress' ), esc_url( $url ) );
+								// Translators: %s is a link to the Adobe Fonts Embed Code page.
+								printf( esc_html__( 'Your Adobe Fonts Kit ID may be incorrect because  <a href="%1$s" target="_blank">%1$s</a> does not exist. Please verify that your Adobe Fonts Kit ID correct. If you have just published your kit, please try again in a few minutes.', 'typekit-fonts-for-wordpress' ), esc_url( $url ) );
 							?>
 						</p></div>
 						<?php
@@ -131,15 +131,15 @@ class OM4_Typekit_Admin {
 		?>
 		<form method="post">
 		<?php wp_nonce_field( 'typekit-fonts-for-wordpress-save-settings' ); ?>
-		<h2><?php esc_html_e( 'Typekit Fonts for WordPress Settings', 'typekit-fonts-for-wordpress' ); ?></h2>
-		<p><?php esc_html_e( 'Typekit offer a service that allows you to select from a range of hundreds of high quality fonts for your WordPress website. The fonts are applied using the font-face standard, so they are standards compliant, fully licensed and accessible.', 'typekit-fonts-for-wordpress' ); ?></p>
-		<p><?php esc_html_e( 'To use this plugin you need to sign up with Typekit, and then configure the following options.', 'typekit-fonts-for-wordpress' ); ?></p>
-		<h3><?php esc_html_e( 'Register with Typekit', 'typekit-fonts-for-wordpress' ); ?></h3>
+		<h2><?php esc_html_e( 'Adobe Fonts (formerly Typekit) for WordPress Settings', 'typekit-fonts-for-wordpress' ); ?></h2>
+		<p><?php esc_html_e( 'Adobe Fonts offer a service that allows you to select from a range of over 25,000 of high quality fonts for your WordPress website. The fonts are applied using the font-face standard, so they are standards compliant, fully licensed and accessible.', 'typekit-fonts-for-wordpress' ); ?></p>
+		<p><?php esc_html_e( 'To use this plugin you need to sign up with Adobe Fonts, and then configure the following options.', 'typekit-fonts-for-wordpress' ); ?></p>
+		<h3><?php esc_html_e( 'Register with Adobe Fonts', 'typekit-fonts-for-wordpress' ); ?></h3>
 		<ol>
 			<li>
 			<?php
 				// Translators: %s is a link to Typekit.
-				printf( esc_html__( 'Go to <a href="%s" target="blank">typekit.com</a> and register for an account.', 'typekit-fonts-for-wordpress' ), 'https://typekit.com/' );
+				printf( esc_html__( 'Go to <a href="%s" target="blank">Adobe Fonts</a> and register for an account.', 'typekit-fonts-for-wordpress' ), 'https://fonts.adobe.com' );
 			?>
 			</li>
 			<li><?php esc_html_e( 'Choose a few fonts to add to your account and Publish them.', 'typekit-fonts-for-wordpress' ); ?></li>
@@ -147,8 +147,8 @@ class OM4_Typekit_Admin {
 		</ol>
 		<h3><?php esc_html_e( 'Plugin Configuration', 'typekit-fonts-for-wordpress' ); ?></h3>
 		<ol start="4">
-			<li><?php esc_html_e( 'Enter your Typekit Kit ID (shown at the bottom of the Embed Code screen).', 'typekit-fonts-for-wordpress' ); ?><br />
-				<p class="option"><label for="kitid"><?php esc_html_e( 'Typekit Kit ID:', 'typekit-fonts-for-wordpress' ); ?></label> <input type="text" name="kitid" value="<?php echo esc_attr( $this->typekit_instance->get_account_id() ); ?>" /><br />
+			<li><?php esc_html_e( 'Enter your Adobe Fonts Kit ID (shown at the bottom of the Embed Code screen).', 'typekit-fonts-for-wordpress' ); ?><br />
+				<p class="option"><label for="kitid"><?php esc_html_e( 'Adobe Fonts Kit ID:', 'typekit-fonts-for-wordpress' ); ?></label> <input type="text" name="kitid" value="<?php echo esc_attr( $this->typekit_instance->get_account_id() ); ?>" /><br />
 			</li>
 			<li><?php esc_html_e( 'Choose your Preferred Embed Method.', 'typekit-fonts-for-wordpress' ); ?><br />
 				<p class="option"><label for="method"><?php esc_attr_e( 'Embed Method:', 'typekit-fonts-for-wordpress' ); ?></label>
@@ -158,7 +158,7 @@ class OM4_Typekit_Admin {
 					</select>
 			</li>
 
-			<li><?php esc_html_e( 'You can add selectors using the Typekit Kit Editor. Alternatively you can define your own CSS rules in your own style sheet or using the Custom CSS Rules field below (technical note: these CSS rules will be embedded in the header of each page). Look at the advanced examples shown in the Typekit editor for ideas.', 'typekit-fonts-for-wordpress' ); ?>
+			<li><?php esc_html_e( 'You can add selectors using the Adobe Fonts Kit Editor. Alternatively you can define your own CSS rules in your own style sheet or using the Custom CSS Rules field below (technical note: these CSS rules will be embedded in the header of each page). Look at the advanced examples shown in the Adobe Fonts editor for ideas.', 'typekit-fonts-for-wordpress' ); ?>
 				<p class="option"><label for="css"><?php esc_attr_e( 'Custom CSS Rules:', 'typekit-fonts-for-wordpress' ); ?></label> <textarea name="css" rows="10" cols="80"><?php echo esc_textarea( $this->typekit_instance->get_css_rules() ); ?></textarea><br />
 				<a href="#help-css"><?php esc_html_e( 'Click here for help on CSS', 'typekit-fonts-for-wordpress' ); ?></a>
 				</p>
@@ -170,30 +170,30 @@ class OM4_Typekit_Admin {
 		<h3 id="help"><?php esc_html_e( 'Help', 'typekit-fonts-for-wordpress' ); ?></h3>
 		<h4 id="help-fontsnotshowing"><?php esc_html_e( 'Fonts not showing?', 'typekit-fonts-for-wordpress' ); ?></h4>
 			<ol>
-				<li><?php esc_html_e( 'Have you created your Typekit account, added fonts to it and <strong>pressed Publish</strong>? Fonts aren\'t available until they are published.', 'typekit-fonts-for-wordpress' ); ?></li>
-				<li><?php esc_html_e( 'Have you <strong>waited a few minutes</strong> to allow Typekit time to send your fonts out around the world? Grab a cup of coffee and try again soon.', 'typekit-fonts-for-wordpress' ); ?></li>
+				<li><?php esc_html_e( 'Have you created your Adobe Fonts account, added fonts to it and <strong>pressed Publish</strong>? Fonts aren\'t available until they are published.', 'typekit-fonts-for-wordpress' ); ?></li>
+				<li><?php esc_html_e( 'Have you <strong>waited a few minutes</strong> to allow Adobe Fonts time to send your fonts out around the world? Grab a cup of coffee and try again soon.', 'typekit-fonts-for-wordpress' ); ?></li>
 				<li><?php esc_html_e( 'Have you <strong>added CSS rules</strong> to display your fonts? If in doubt, just try the H2 rule shown in the example and see if that works for you.', 'typekit-fonts-for-wordpress' ); ?></li>
 			</ol>
 		<h4 id="help-css"><?php esc_html_e( 'CSS', 'typekit-fonts-for-wordpress' ); ?></h4>
-			<p><?php esc_html_e( 'You can use CSS selectors to apply your new typekit fonts. The settings for this plugin allow you to add new CSS rules to your website to activate Typekit fonts. If you are using fonts for more than just a few elements, you may find it easier to manage this way. And using your own CSS rules is a good way to access different font weights.', 'typekit-fonts-for-wordpress' ); ?></p>
-			<p><?php esc_html_e( 'There are many options for using CSS, but here are a few common scenarios. Note: we\'ve used proxima-nova for our examples, you\'ll need to change proxima-nova to the name of your chosen font from Typekit - your added font names will be visible in the Kit Editor.', 'typekit-fonts-for-wordpress' ); ?></p>
+			<p><?php esc_html_e( 'You can use CSS selectors to apply your new Adobe Fonts. The settings for this plugin allow you to add new CSS rules to your website to activate Adobe Fonts. If you are using fonts for more than just a few elements, you may find it easier to manage this way. And using your own CSS rules is a good way to access different font weights.', 'typekit-fonts-for-wordpress' ); ?></p>
+			<p><?php esc_html_e( 'There are many options for using CSS, but here are a few common scenarios. Note: we\'ve used proxima-nova for our examples, you\'ll need to change proxima-nova to the name of your chosen font from Adobe Fonts - your added font names will be visible in the Kit Editor.', 'typekit-fonts-for-wordpress' ); ?></p>
 			<h5><?php esc_html_e( 'Headings', 'typekit-fonts-for-wordpress' ); ?></h5>
 			<p>
-				<?php esc_html_e( 'If you want your Typekit fonts to be used for H2 headings, add a rule like this to your CSS Rules field:', 'typekit-fonts-for-wordpress' ); ?>
+				<?php esc_html_e( 'If you want your Adobe Fonts to be used for H2 headings, add a rule like this to your CSS Rules field:', 'typekit-fonts-for-wordpress' ); ?>
 				<code>h2 { font-family: "proxima-nova-1","proxima-nova-2",sans-serif; }</code>
 				<?php esc_html_e( '(and you can add similar rules if you want to target other headings such as H3)', 'typekit-fonts-for-wordpress' ); ?>
 			</p>
 			<h5><?php esc_html_e( 'Sidebar Headings', 'typekit-fonts-for-wordpress' ); ?></h5>
 			<p>
-				<?php esc_html_e( 'If you want your Typekit fonts to be used for sidebar H2 headings, add a rule like this to your CSS Rules field:', 'typekit-fonts-for-wordpress' ); ?>
+				<?php esc_html_e( 'If you want your Adobe Fonts to be used for sidebar H2 headings, add a rule like this to your CSS Rules field:', 'typekit-fonts-for-wordpress' ); ?>
 				<code>#sidebar h2 { font-family: "proxima-nova-1","proxima-nova-2",sans-serif; }</code>
 			</p>
 			<h5><?php esc_html_e( 'Font Weights', 'typekit-fonts-for-wordpress' ); ?></h5>
 			<p><?php esc_html_e( 'If your Kit contains more than one weight and/or style for a particular font, you need to use numeric <code class="inline">font-weight</code> values in your CSS rules to map to a font\'s weights.', 'typekit-fonts-for-wordpress' ); ?></p>
-			<p><?php esc_html_e( 'Typekit fonts have been assigned values from 100 to 900 based on information from the font\'s designer. Web browsers also do some guessing as to which weight it should display if the specific value isn\'t present. Say your font has 100, 300 and 900. If you set your text with <code class="inline">font-weight: 400</code>, it will choose the most appropriate (300 in this case).<br />Note: A <code class="inline">font-weight</code> value of 400 corresponds to <code class="inline">font-weight: normal;</code>', 'typekit-fonts-for-wordpress' ); ?></p>
+			<p><?php esc_html_e( 'Adobe Fonts have been assigned values from 100 to 900 based on information from the font\'s designer. Web browsers also do some guessing as to which weight it should display if the specific value isn\'t present. Say your font has 100, 300 and 900. If you set your text with <code class="inline">font-weight: 400</code>, it will choose the most appropriate (300 in this case).<br />Note: A <code class="inline">font-weight</code> value of 400 corresponds to <code class="inline">font-weight: normal;</code>', 'typekit-fonts-for-wordpress' ); ?></p>
 			<p>
 			<?php
-				// Translators: %s is a link to Typekit Help.
+				// Translators: %s is a link to Adobe Fonts Help.
 				printf( esc_html__( 'See <a href="%s">this help article</a> for more details.', 'typekit-fonts-for-wordpress' ), 'http://getsatisfaction.com/typekit/topics/how_do_i_use_alternate_weights_and_styles' );
 			?>
 			</p>
@@ -208,8 +208,8 @@ class OM4_Typekit_Admin {
 		<h4 id="help-css-external"><?php esc_html_e( 'Where to go to get help', 'typekit-fonts-for-wordpress' ); ?></h4>
 			<p class="indent">
 				<?php
-					// Translators: %s is a link to Typekit Support.
-					printf( esc_html__( '<a href="%s" target="_blank">Typekit Support</a>', 'typekit-fonts-for-wordpress' ), 'http://getsatisfaction.com/typekit/' );
+					// Translators: %s is a link to Adobe Fonts Support.
+					printf( esc_html__( '<a href="%s" target="_blank">Adobe Fonts Support</a>', 'typekit-fonts-for-wordpress' ), 'http://getsatisfaction.com/typekit/' );
 				?>
 				<br />
 				<?php

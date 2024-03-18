@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Typekit Fonts for WordPress
-Plugin URI: https://om4.com.au/plugins/typekit-fonts-for-wordpress-plugin/
-Description: Use a range of hundreds of high quality fonts on your WordPress website by integrating the <a href="http://typekit.com">Typekit</a> font service into your WordPress blog.
+Plugin Name: Adobe Fonts (formerly Typekit) for WordPress
+Plugin URI: https://om4.io/plugins/adobe-fonts-for-wordpress/
+Description: Use a range of over 25,000 of high quality fonts on your WordPress website by integrating the <a href="https://fonts.adobe.com">Adobe Fonts</a> font service into your WordPress blog.
 Version: 1.10.0
 Author: OM4
-Author URI: https://om4.com.au/plugins/
+Author URI: https://om4.io/
 Text Domain: typekit-fonts-for-wordpress
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /**
- * Typekit functionality.
+ * Adobe Fonts (formerly Typekit) functionality.
  */
 class OM4_Typekit {
 
@@ -70,7 +70,7 @@ class OM4_Typekit {
 	private $admin;
 
 	/**
-	 * The format for the Typekit JavaScript embed code
+	 * The format for the Adobe Fonts JavaScript embed code
 	 *
 	 * @var string
 	 */
@@ -86,21 +86,21 @@ class OM4_Typekit {
 </script>';
 
 	/**
-	 * The format for the Typekit CSS file URL
+	 * The format for the Adobe Fonts CSS file URL
 	 *
 	 * @var string
 	 */
 	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
 
 	/**
-	 * The regular expression used to validate the Typekit Account/Kit ID
+	 * The regular expression used to validate the Adobe Fonts Account/Kit ID
 	 *
 	 * @var string
 	 */
 	public $kitid_regexp = '#([a-z0-9]*)#i';
 
 	/**
-	 * The format for the Typekit CSS file URL. Used in HTTP requests to verify that the URL doesn't produce a 404 error
+	 * The format for the Adobe Fonts CSS file URL. Used in HTTP requests to verify that the URL doesn't produce a 404 error
 	 *
 	 * @var string
 	 */
@@ -198,9 +198,9 @@ class OM4_Typekit {
 	}
 
 	/**
-	 * Retrieve the Typekit embed code if the unique account id has been set
+	 * Retrieve the Adobe Fonts embed code if the unique account id has been set
 	 *
-	 * @return string The typekit embed code if the unique account ID has been set, otherwise an empty string.
+	 * @return string The Adobe Fonts embed code if the unique account ID has been set, otherwise an empty string.
 	 */
 	public function get_embed_code() {
 		$id = $this->get_account_id();
@@ -217,7 +217,7 @@ class OM4_Typekit {
 	}
 
 	/**
-	 * Get the stored Typekit Account/Kit ID
+	 * Get the stored Adobe Fonts Account/Kit ID
 	 *
 	 * @return string The account ID if it has been specified, otherwise an empty string
 	 */
@@ -258,9 +258,9 @@ class OM4_Typekit {
 	}
 
 	/**
-	 * Parse and save the Typekit Account/Kit ID
+	 * Parse and save the Adobe Fonts Account/Kit ID
 	 *
-	 * @param string $id The Typekit Account/Kit ID.
+	 * @param string $id The Adobe Fonts Account/Kit ID.
 	 * @return void
 	 */
 	public function parse_kit_id( $id ) {
@@ -316,7 +316,7 @@ class OM4_Typekit {
 	public function header_code() {
 		?>
 
-<!-- BEGIN Typekit Fonts for WordPress -->
+<!-- BEGIN Adobe Fonts for WordPress -->
 		<?php
 		echo $this->get_embed_code();
 
@@ -330,7 +330,7 @@ class OM4_Typekit {
 		}
 		?>
 
-<!-- END Typekit Fonts for WordPress -->
+<!-- END Adobe Fonts for WordPress -->
 
 		<?php
 	}
