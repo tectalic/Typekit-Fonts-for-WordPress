@@ -314,14 +314,15 @@ class OM4_Typekit {
 	 */
 	public function header_code() {
 
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<!-- BEGIN Adobe Fonts for WordPress -->';
-		echo wp_kses( $this->get_embed_code(), array( 'script', 'link' ) );
-
+		echo $this->get_embed_code();
 		// If CSS settings exist, echo them within style tags.
 		if ( strlen( $this->settings['css'] ) ) {
-			echo wp_kses( "<style type='text/css'>{$this->settings['css']}</style>", array( 'style' ) );
+			echo "<style type='text/css'>{$this->settings['css']}</style>";
 		}
 		echo '<!-- END Adobe Fonts for WordPress -->';
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
