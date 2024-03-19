@@ -71,12 +71,14 @@ class OM4_Typekit {
   })(document);
 </script>';
 
+	// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 	/**
 	 * The format for the Adobe Fonts CSS file URL
 	 *
 	 * @var string
 	 */
 	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
+	// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 
 	/**
 	 * The regular expression used to validate the Adobe Fonts Account/Web Projects ID
@@ -311,25 +313,15 @@ class OM4_Typekit {
 	 * @return void
 	 */
 	public function header_code() {
-		?>
 
-<!-- BEGIN Adobe Fonts for WordPress -->
-		<?php
-		echo $this->get_embed_code();
+		echo '<!-- BEGIN Adobe Fonts for WordPress -->';
+		echo wp_kses( $this->get_embed_code(), array( 'script', 'link' ) );
 
+		// If CSS settings exist, echo them within style tags.
 		if ( strlen( $this->settings['css'] ) ) {
-			?>
-
-<style type="text/css">
-			<?php echo $this->settings['css']; ?>
-</style>
-			<?php
+			echo wp_kses( "<style type='text/css'>{$this->settings['css']}</style>", array( 'style' ) );
 		}
-		?>
-
-<!-- END Adobe Fonts for WordPress -->
-
-		<?php
+		echo '<!-- END Adobe Fonts for WordPress -->';
 	}
 }
 

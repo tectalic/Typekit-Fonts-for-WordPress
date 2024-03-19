@@ -89,23 +89,18 @@ class OM4_Typekit_Admin {
 				$id = $this->typekit_instance->get_account_id();
 				if ( '' === $id ) {
 					// Embed code is empty.
-					?>
-					<div id="error" class="error"><p>
-					<?php
 					// Translators: %s is a link to the Adobe Fonts instructions.
-					$instructions = sprintf( wp_kses_post( __( ' Please <a href="%s">click here for instructions</a> on how to obtain your Adobe Fonts embed code.', 'typekit-fonts-for-wordpress' ) ), '#register' );
-					if ( strlen( $kitid ) ) {
+					$instructions = sprintf( __( ' Please <a href="%s">click here for instructions</a> on how to obtain your Adobe Fonts embed code.', 'typekit-fonts-for-wordpress' ), '#register' );
+
+					$message = strlen( $kitid )
 						// An embed code has been submitted, but was rejected.
 						// Translators: %s is a link to the Adobe Fonts instructions.
-						printf( wp_kses_post( __( 'Invalid Adobe Fonts Web Projects ID. %s', 'typekit-fonts-for-wordpress' ) ), $instructions );
-					} else {
+						? sprintf( __( 'Invalid Adobe Fonts Web Projects ID. %s', 'typekit-fonts-for-wordpress' ), $instructions )
 						// No Web Projects ID was submitted.
 						// Translators: %s is a link to the Adobe Fonts instructions.
-						printf( wp_kses_post( __( 'You must enter your Adobe Fonts Web Projects ID. %s', 'typekit-fonts-for-wordpress' ) ), $instructions );
-					}
-					?>
-					</p></div>
-					<?php
+						: sprintf( __( 'You must enter your Adobe Fonts Web Projects ID. %s', 'typekit-fonts-for-wordpress' ), $instructions );
+
+					echo wp_kses_post( sprintf( '<div id="error" class="error"><p>%s</p></div>', $message ) );
 				} else {
 					// Ensure the Adobe Fonts account ID maps to a valid JS file on Adobe Fonts' servers (ie doesn't return a 404 error).
 					$url      = sprintf( $this->typekit_instance->embedcodeurl, $id );
