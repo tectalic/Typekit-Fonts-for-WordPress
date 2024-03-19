@@ -2,22 +2,22 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Adobe Fonts (Formerly Typekit) for WordPress 1.10.0\n"
+"Project-Id-Version: Adobe Fonts (formerly Typekit) for WordPress 1.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Typekit-Fonts-for-WordPress\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-19T03:08:44+00:00\n"
+"POT-Creation-Date: 2024-03-19T06:53:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: typekit-fonts-for-wordpress\n"
 
 #. Plugin Name of the plugin
 #: typekit.php
-#: typekit-admin.php:132
-msgid "Adobe Fonts (Formerly Typekit) for WordPress"
+#: typekit-admin.php:131
+msgid "Adobe Fonts (formerly Typekit) for WordPress"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -41,7 +41,7 @@ msgid "https://om4.io/"
 msgstr ""
 
 #: typekit-admin.php:37
-msgid "Adobe Fonts (Formerly Typekit)"
+msgid "Adobe Fonts (formerly Typekit)"
 msgstr ""
 
 #: typekit-admin.php:38
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: typekit-admin.php:135
+#: typekit-admin.php:134
 msgid "Plugin Configuration"
 msgstr ""
 
