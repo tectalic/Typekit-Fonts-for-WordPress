@@ -34,7 +34,7 @@ class OM4_Typekit_Admin {
 	 */
 	public function admin_menu() {
 		add_options_page(
-			__( 'Adobe Fonts (Formerly Typekit)', 'typekit-fonts-for-wordpress' ),
+			__( 'Adobe Fonts (formerly Typekit)', 'typekit-fonts-for-wordpress' ),
 			__( 'Adobe Fonts', 'typekit-fonts-for-wordpress' ),
 			'manage_options',
 			'typekit-admin',
@@ -129,7 +129,7 @@ class OM4_Typekit_Admin {
 		}
 		?>
 		<?php wp_nonce_field( 'typekit-fonts-for-wordpress-save-settings' ); ?>
-		<h1><?php esc_html_e( 'Adobe Fonts (Formerly Typekit) for WordPress', 'typekit-fonts-for-wordpress' ); ?></h1>
+		<h1><?php esc_html_e( 'Adobe Fonts (formerly Typekit) for WordPress', 'typekit-fonts-for-wordpress' ); ?></h1>
 
 		<!-- Settings -->
 		<h2><?php esc_html_e( 'Plugin Configuration', 'typekit-fonts-for-wordpress' ); ?></h2>

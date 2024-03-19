@@ -1,4 +1,4 @@
-=== Adobe Fonts (Formerly Typekit) for WordPress ===
+=== Adobe Fonts (formerly Typekit) for WordPress ===
 Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: adobe, typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
@@ -38,7 +38,7 @@ Installation of this plugin is simple:
 
 1. Download the plugin files and copy them to your Plugins directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to the WordPress Dashboard, and use "Settings", "Adobe Fonts (Formerly Typekit)" to enter your Web Projects ID and embed method.
+3. Go to the WordPress Dashboard, and use "Settings", "Adobe Fonts (formerly Typekit)" to enter your Web Projects ID and embed method.
 4. If you want to set up some CSS selectors like the examples shown in the Advanced link, enter your CSS rules in the plugin settings as well.
 
 == Frequently Asked Questions ==
@@ -62,8 +62,9 @@ Please see this page (https://helpx.adobe.com/fonts/using/browser-os-support.htm
 == Changelog ==
 
 = 1.10.0 =
-* Renamed to Adobe Fonts.
-* WordPress 6.5 compatibility.
+* Renamed to "Adobe Fonts (formerly Typekit) for WordPress."
+* Updated the help/description to reflect the differences between Adobe Fonts and Typekit.
+* Marked as compatible with WordPress 6.5.
 
 = 1.9.0 =
 * Added support for Typekit's new CSS embed method.
