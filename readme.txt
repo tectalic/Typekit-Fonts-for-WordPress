@@ -38,7 +38,7 @@ Installation of this plugin is simple:
 
 1. Download the plugin files and copy them to your Plugins directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to the WordPress Dashboard, and use "Settings", "Adobe Fonts (formerly Typekit)" to enter your Web Projects ID and embed method.
+3. Go to the WordPress Dashboard, and use "Settings", "Adobe Fonts" to enter your Web Projects ID and embed method.
 4. If you want to set up some CSS selectors like the examples shown in the Advanced link, enter your CSS rules in the plugin settings as well.
 
 == Frequently Asked Questions ==
