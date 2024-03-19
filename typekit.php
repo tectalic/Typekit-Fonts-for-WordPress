@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Adobe Fonts (formerly Typekit) for WordPress
+Plugin Name: Adobe Fonts (Formerly Typekit) for WordPress
 Plugin URI: https://om4.io/plugins/adobe-fonts-for-wordpress/
 Description: Use a range of over 25,000 of high quality fonts on your WordPress website by integrating the <a href="https://fonts.adobe.com">Adobe Fonts</a> font service into your WordPress blog.
 Version: 1.10.0
@@ -30,7 +30,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /**
- * Adobe Fonts (formerly Typekit) functionality.
+ * Adobe Fonts (Formerly Typekit) functionality.
  */
 class OM4_Typekit {
 
@@ -79,7 +79,7 @@ class OM4_Typekit {
 	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
 
 	/**
-	 * The regular expression used to validate the Adobe Fonts Account/Kit ID
+	 * The regular expression used to validate the Adobe Fonts Account/Web Projects ID
 	 *
 	 * @var string
 	 */
@@ -211,7 +211,7 @@ class OM4_Typekit {
 	}
 
 	/**
-	 * Get the stored Adobe Fonts Account/Kit ID
+	 * Get the stored Adobe Fonts Account/Web Projects ID
 	 *
 	 * @return string The account ID if it has been specified, otherwise an empty string
 	 */
@@ -252,9 +252,9 @@ class OM4_Typekit {
 	}
 
 	/**
-	 * Parse and save the Adobe Fonts Account/Kit ID
+	 * Parse and save the Adobe Fonts Account/Web Projects ID
 	 *
-	 * @param string $id The Adobe Fonts Account/Kit ID.
+	 * @param string $id The Adobe Fonts Account/Web Projects ID.
 	 * @return void
 	 */
 	public function parse_kit_id( $id ) {
