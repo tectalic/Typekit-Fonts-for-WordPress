@@ -2,10 +2,9 @@
 Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: adobe, typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
-Requires at least: 4.2
-Tested up to: 4.9
-Stable tag: 1.9.0
-Requires PHP: 5.2.4
+Requires at least: 6.0
+Tested up to: 6.5
+Stable tag: 1.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
