@@ -128,12 +128,12 @@ class OM4_Typekit_Admin {
 			<?php
 		}
 		?>
-		<?php wp_nonce_field( 'typekit-fonts-for-wordpress-save-settings' ); ?>
 		<h1><?php esc_html_e( 'Adobe Fonts (formerly Typekit) for WordPress', 'typekit-fonts-for-wordpress' ); ?></h1>
 
 		<!-- Settings -->
 		<h2><?php esc_html_e( 'Plugin Configuration', 'typekit-fonts-for-wordpress' ); ?></h2>
 		<form method="post">
+		<?php wp_nonce_field( 'typekit-fonts-for-wordpress-save-settings' ); ?>
 		<ol>
 			<li><?php esc_html_e( 'Enter your Adobe Fonts Web Project ID (shown on the Web Project screen).', 'typekit-fonts-for-wordpress' ); ?><br />
 				<p class="option"><label for="kitid"><?php esc_html_e( 'Adobe Fonts Web Projects ID:', 'typekit-fonts-for-wordpress' ); ?></label> <input type="text" name="kitid" value="<?php echo esc_attr( $this->typekit_instance->get_account_id() ); ?>" /><br />
