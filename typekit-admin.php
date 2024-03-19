@@ -51,7 +51,7 @@ class OM4_Typekit_Admin {
 	 */
 	public function action_links( $links ) {
 		$plugin_links = array(
-			'<a href="' . admin_url( 'options-general.php?page=typekit-admin.php' ) . '">' . __( 'Settings', 'typekit-fonts-for-wordpress' ) . '</a>',
+			'<a href="' . admin_url( 'options-general.php?page=typekit-admin' ) . '">' . __( 'Settings', 'typekit-fonts-for-wordpress' ) . '</a>',
 		);
 
 		return array_merge( $plugin_links, $links );
