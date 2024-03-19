@@ -1,0 +1,11 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+parameters:
+	paths:
+		- typekit-admin.php
+		- typekit.php
+	fileExtensions:
+		- php
+	level: max
+	treatPhpDocTypesAsCertain: false

@@ -1,0 +1,29 @@
+{
+  "config" : {
+    "allow-plugins" : {
+      "dealerdirect/phpcodesniffer-composer-installer" : true
+    }
+  },
+  "require" : {
+    "php" : ">=5.6"
+  },
+  "require-dev" : {
+    "dealerdirect/phpcodesniffer-composer-installer" : "^1.0",
+    "phpcompatibility/phpcompatibility-wp" : "^2.1",
+    "phpstan/phpstan" : "^1.10",
+    "phpstan/phpstan-deprecation-rules" : "^1.1",
+    "squizlabs/php_codesniffer" : "^3.9",
+    "szepeviktor/phpstan-wordpress" : "^1.3",
+    "wp-cli/i18n-command" : "^2.6",
+    "wp-coding-standards/wpcs" : "^3.0"
+  },
+  "scripts" : {
+    "makepot" : "wp i18n make-pot . languages/typekit-fonts-for-wordpress.pot",
+    "test:static" : "vendor/bin/phpstan analyse --memory-limit=1G",
+    "test:style" : "vendor/bin/phpcs -p -s ",
+    "test:style:fix" : [
+      "vendor/bin/phpcbf -p -s || true",
+      "@test:style"
+    ]
+  }
+}
