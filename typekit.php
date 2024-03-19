@@ -78,7 +78,7 @@ class OM4_Typekit {
 	 * @var string
 	 */
 	public $embedcode_css = '<link rel="stylesheet" href="https://use.typekit.net/%s.css">';
-	// phpcs:disable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
+	// phpcs:enable WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
 
 	/**
 	 * The regular expression used to validate the Adobe Fonts Account/Web Projects ID
