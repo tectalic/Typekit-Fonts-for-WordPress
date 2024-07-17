@@ -3,8 +3,8 @@ Contributors: jamescollins, glenn-om4
 Donate link: https://om4.com.au/plugins/#donate
 Tags: adobe, typekit, fonts, font, design, wp, multisite, wpmu, css, snippet
 Requires at least: 6.0
-Tested up to: 6.5
-Stable tag: 1.10.0
+Tested up to: 6.6
+Stable tag: 1.10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,9 @@ Please see this page (https://helpx.adobe.com/fonts/using/browser-os-support.htm
 2. Detailed inline help
 
 == Changelog ==
+
+= 1.10.0 =
+* Marked as compatible with WordPress 6.6.
 
 = 1.10.0 =
 * Renamed to "Adobe Fonts (formerly Typekit) for WordPress."

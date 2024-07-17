@@ -3,7 +3,7 @@
 Plugin Name: Adobe Fonts (formerly Typekit) for WordPress
 Plugin URI: https://om4.io/plugins/adobe-fonts-for-wordpress/
 Description: Use a range of over 25,000 of high quality fonts on your WordPress website by integrating the <a href="https://fonts.adobe.com">Adobe Fonts</a> font service into your WordPress blog.
-Version: 1.10.0
+Version: 1.10.1
 Author: OM4
 Author URI: https://om4.io/
 Text Domain: typekit-fonts-for-wordpress
